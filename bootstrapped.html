@@ -3,6 +3,7 @@
     <html lang="en">
         <head>
             <meta name="text:Custom Sidebar HTML" content="" />
+            <meta name="image:Background" content="" />
             <meta name="color:Background Color" content="#fff" />
             <meta name="color:Dark Accent Color" content="#427ea3">
             <meta name="if:Align navbar toggle to left" content="1"/>
@@ -24,13 +25,14 @@
                 <script src="//cdn.jsdelivr.net/respond/latest/respond.min.js"></script>
             <![endif]-->
             <style>
-            	body {
-            		background-color: {color:Background Color}
-            	}
+                body {
+                    background-image: url("{image:Background}");
+                    background-color: {color:Background Color}
+                }
 
-    			.navbar-default {
-    				opacity: 0.95;
-    			}
+                .navbar-default,.sidebar {
+                    opacity: 0.95;
+                }
 
                 .form-control:focus {
                     border-color: {AccentColor} !important;
@@ -65,11 +67,11 @@
                     padding-bottom: 12px;
                 }
 
-    			.fa-pencil-square-o {
-    				position: relative;
-    				top: 1px;
-    				font-size: 15px;
-    			}
+                .fa-pencil-square-o {
+                    position: relative;
+                    top: 1px;
+                    font-size: 15px;
+                }
 
                 a.fa-link:hover {
                     text-decoration: none !important;
@@ -251,15 +253,15 @@
                     /* this is the way that it does it on tumblr's dashboard, i don't see a good reason to do it differently */
                 }
 
-            	@media (max-width: 400px) {
-            		#tumblr_controls {
-            			position: fixed;
-                		top: 93.5%;
-                		right: 5px;
-            			width: 204px !important;
-                		height: 31px !important;
-                	}
-            	}
+                @media (max-width: 400px) {
+                    #tumblr_controls {
+                        position: fixed;
+                        top: 93.5%;
+                        right: 5px;
+                        width: 204px !important;
+                        height: 31px !important;
+                    }
+                }
 
                 {CustomCSS}
             </style>
@@ -390,7 +392,7 @@
                             {/block:NextPage}
                         </ul>{/block:Pagination}
                     </div>
-                    <div class='col-lg-4'>
+                    <div class='col-lg-4 sidebar'>
                         <div class="panel panel-default">
                             <div class='panel-body'>
                                 <div class="blog-avatar center-block">
