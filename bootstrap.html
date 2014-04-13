@@ -3,10 +3,11 @@
     <head>
         <meta name="text:Custom Sidebar HTML" content="" />
         <meta name="if:Align navbar toggle to left" content="1"/>
+        <meta name="color:Background Color" content="#fff" />
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="shortcut icon" href="{Favicon}">
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
         {block:Description}
@@ -21,6 +22,14 @@
             <script src="//cdn.jsdelivr.net/respond/latest/respond.min.js"></script>
         <![endif]-->
         <style>
+        	body {
+        		background-color: {color:Background Color}
+        	}
+
+			.navbar-default {
+				opacity: 0.95;
+			}
+
 			.fa-pencil-square-o {
 				position: relative;
 				top: 1px;
