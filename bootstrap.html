@@ -232,13 +232,15 @@
                 /* this is the way that it does it on tumblr's dashboard, i don't see a good reason to do it differently */
             }
 
-            #tumblr_controls {
-            	position: fixed;
-            	top: 93.5%;
-            	right: 5px;
-            	width: 204px !important;
-            	height: 31px !important;
-            }
+        	@media (max-width: 400px) {
+        		#tumblr_controls {
+        			position: fixed;
+            		top: 93.5%;
+            		right: 5px;
+        			width: 204px !important;
+            		height: 31px !important;
+            	}
+        	}
 
             {CustomCSS}
         </style>
