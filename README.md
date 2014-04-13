@@ -5,7 +5,7 @@ custom themes for tumblr. mods, original themes, you name it, if i made it, it i
 ## themes
 
 - originals
-    - Bootstrapped is a tumblr theme made with [Bootstrap](http://getbootstrap.com/) and [FontAwesome](http://fontawesome.io/).
+    - [Bootstrapped](http://bootstrapped-demo.tumblr.com/) is a tumblr theme made with [Bootstrap](http://getbootstrap.com/) and [FontAwesome](http://fontawesome.io/).
 - modifications
     - ashleymod is a modification of [Ashley](https://github.com/jxnblk/ashley), originally by [jxnblk](https://github.com/jxnblk).
     - opticamod is a modification of [Optica](https://www.tumblr.com/theme/37310), originally by [kcreate](http://k-create.com).
