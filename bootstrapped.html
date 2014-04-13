@@ -39,7 +39,7 @@
                     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba({RGBAccentColor}, 0.6);
                 }
 
-                .post-reblogged-from a, .read_more_container a, .post-permalink, .pager a, .post a {
+                a.fa-link, .post-reblogged-from a, .read_more_container a, .post-permalink, .pager a, .post a {
                     color: {AccentColor} !important;
                 }
 
@@ -303,7 +303,7 @@
             <div class="container">
                 <div class='row'>
                     <div class='col-lg-8'>
-                        {block:SearchPage}<h2 style='margin-top: 0px;'>{SearchResultCount} results for "{SearchQuery}" <a class='fa fa-link' href='/search?q={URLSafeSearchQuery}'></a></h2>{/block:SearchPage}
+                        {block:SearchPage}<h2 style='color: {AccentColor}; margin-top: 0px;'>{SearchResultCount} results for "{SearchQuery}" <a class='small fa fa-link' href='/search?q={URLSafeSearchQuery}'></a></h2>{/block:SearchPage}
                         <div class='posts'>
                             {block:Posts}<div class='post'><div class="panel panel-default">
                                 {block:Title}<div class="panel-heading">
