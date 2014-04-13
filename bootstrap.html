@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+<<<<<<< HEAD
         <meta name="text:Custom Sidebar HTML" content="" />
         <meta name="if:Align navbar toggle to left" content="1"/>
         <meta name="color:Background Color" content="#fff" />
+=======
+        <meta name="text:Custom Sidebar HTML" content="">
+        <meta name="if:Align navbar toggle to left" content="1">
+        <meta name="if:Inverse Navbar color" content="0"/>
+        <meta name="color:Dark Accent Color" content="#427ea3">
+
+>>>>>>> 40b22150f3c190b04895b9ba71a1604dc36fc03c
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="shortcut icon" href="{Favicon}">
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
-        {block:Description}
-            <meta name="description" content="{MetaDescription}" />
-        {/block:Description}
+        {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
         <title>{Title}</title>
         <!-- Bootstrap core CSS -->
         <link href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet">
@@ -22,6 +28,7 @@
             <script src="//cdn.jsdelivr.net/respond/latest/respond.min.js"></script>
         <![endif]-->
         <style>
+<<<<<<< HEAD
         	body {
         		background-color: {color:Background Color}
         	}
@@ -29,12 +36,32 @@
 			.navbar-default {
 				opacity: 0.95;
 			}
+=======
+            .post a:link, .pager a:link {
+                color: {AccentColor} !important;
+            }
+
+            .post a:hover, .post a:active, .post a:focus, .pager a:hover, .pager a:active, .pager a:focus {
+                color: {color:Dark Accent Color} !important;
+            }
+
+            .follow-button {
+                border-color: rgba(0,0,0,.075);
+                background-color: {AccentColor} !important;
+            }
+
+            .follow-button:hover, .follow-button:active, .follow-button:focus {
+                border-color: rgba(0,0,0,.125);
+                background-color: {color:Dark Accent Color} !important;
+            }
+>>>>>>> 40b22150f3c190b04895b9ba71a1604dc36fc03c
 
 			.fa-pencil-square-o {
 				position: relative;
 				top: 1px;
 				font-size: 15px;
 			}
+
 
             .flex-video {
                 position: relative;
@@ -51,7 +78,7 @@
             .flex-video object,
             .flex-video embed {
                 position: absolute;
-                top: 0  ;
+                top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
@@ -223,7 +250,7 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+        <nav class="navbar navbar-default navbar-static-top {block:IfInverseNavbarColor}navbar-inverse{/block:IfInverseNavbarColor}" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -248,7 +275,7 @@
 
                     </ul>
                 </div>
-            </div><!-- {block:Description} <small>{Description}</small>{/block:Description} -->
+            </div>
         </nav>
         <div class="container">
             <div class='row'>
@@ -349,7 +376,7 @@
                                 <br />
                             </div>
                             {block:Description}<p class='blog-description center-block'>{Description}</p>{/block:Description}
-                            <a class='btn btn-lg btn-block btn-primary' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a>{text:Custom Sidebar HTML}
+                            <a class='btn btn-lg btn-block btn-primary follow-button' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a>{text:Custom Sidebar HTML}
                         </div>
                     </div>
                 </div>
