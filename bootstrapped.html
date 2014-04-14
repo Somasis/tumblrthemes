@@ -2,6 +2,7 @@
 <!-- Bootstrapped, written by Somasis <http://somasis.com/> -->
 <html lang="en">
     <head>
+        <meta name="text:Twitter Username" content="" />
         <meta name="text:Custom Sidebar HTML" content="" />
         <meta name="image:Background" content="" />
         <meta name="color:Background Color" content="#fff" />
@@ -12,6 +13,22 @@
         <meta name="if:Show Portrait" content="1"/>
         <meta name="if:Show Archive and Random" content="1"/>
         <meta name="if:Show Following" content="0"/>
+        <meta name="if:Show RSS Feed" content="1"/>
+        <meta name="if:Show Twitter Link" content="0"/>
+
+        <!-- meta name="if:Show Post Type" content="0" -->
+        <!--    post type icon idea:
+                    fa-font - text
+                    fa-picture-o - photo/photoset
+                    fa-quote-left - quote
+                    fa-globe - link
+                    fa-comment - chat
+                    glyphicon-headphones - audio
+                    (better than fontawesome's headphones if you ask me)
+                    fa-video-camera - video
+                    {block:Text}<i class='fa-font' alt='{lang:Text post}'></i>{/block:Text}
+                    etc.
+        -->
         
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,7 +72,7 @@
                 box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba({RGBAccentColor}, 0.6);
             }
 
-            a.fa-link, .post-reblogged-from a, .read_more_container a, .post-permalink, .pager a, .post a {
+            .accent-link, a.fa-link, .post-reblogged-from a, .read_more_container a, .post-permalink, .pager a, .post a {
                 color: {AccentColor} !important;
             }
 
@@ -63,7 +80,7 @@
                 max-width:100%
             }
 
-            .post a:hover, .post a:active, .post a:focus, .pager a:hover, .pager a:active, .pager a:focus, a.fa-link:hover, a.fa-link:focus, a.fa-link:active {
+            .accent-link:hover, .accent-link:active, .accent-link:focus, .post a:hover, .post a:active, .post a:focus, .pager a:hover, .pager a:active, .pager a:focus, a.fa-link:hover, a.fa-link:focus, a.fa-link:active {
                 color: {color:Dark Accent Color} !important;
             }
 
@@ -415,7 +432,10 @@
                             </div><br />{/block:IfShowArchiveAndRandom}
                             {text:Custom Sidebar HTML}
                         </div>
-                    </div><br />
+                    </div>
+                    {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>{/block:IfShowRSSFeed}
+                    {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
+                    <br /><br />
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
                         {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}'></a>{/block:Followed}
                     </div>{/block:Following}{/block:IfShowFollowing}
