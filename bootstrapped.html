@@ -3,6 +3,8 @@
 <html lang="en">
     <head>
         <meta name="text:Twitter Username" content="" />
+        <meta name="text:SoundCloud Username" content="" />
+        <meta name="text:GitHub Username" content="" />
         <meta name="text:Custom Sidebar HTML" content="" />
         <meta name="image:Background" content="" />
         <meta name="color:Background Color" content="#fff" />
@@ -15,6 +17,8 @@
         <meta name="if:Show Following" content="0"/>
         <meta name="if:Show RSS Feed" content="1"/>
         <meta name="if:Show Twitter Link" content="0"/>
+        <meta name="if:Show SoundCloud Link" content="0"/>
+        <meta name="if:Show GitHub Link" content="0"/>
 
         <!-- meta name="if:Show Post Type" content="0" -->
         <!--    post type icon idea:
@@ -37,9 +41,9 @@
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
         {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
         <title>{Title}</title>
-        <!-- Bootstrap core CSS -->
         <link href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+        <link href="//cdn.jsdelivr.net/font-entypo/latest/dev/entypo.css" rel="stylesheet">
         <!--[if lt IE 9]>
             <script src="//cdn.jsdelivr.net/html5shiv/latest/html5shiv.js"></script>
             <script src="//cdn.jsdelivr.net/respond/latest/respond.min.js"></script>
@@ -265,6 +269,13 @@
                 border-radius: 5px;
             }
 
+            .post-panorama {
+                padding-top: 0px;
+            }
+
+            .panorama {
+                overflow: hidden;
+            }
 
             {block:IfAlignNavbarToggleToLeft}.navbar-toggle {
                 float: left!important;
@@ -380,7 +391,8 @@
                             {block:Audio}<div class='post-special-content center-block'>{block:AudioEmbed}{AudioEmbed color="white"}{/block:AudioEmbed}</div>{/block:Audio}
                             {block:Quote}<div class='panel-body'><blockquote class='quote quote-{Length}'>{Quote}{block:Source}<footer>{Source}</footer>{/block:Source}</blockquote></div>{/block:Quote}
                             {block:Photo}{LinkOpenTag}<img class='img-responsive center-block' src="{PhotoURL-HighRes}" alt="{PhotoAlt}" width="{PhotoWidth-HighRes}" height="{PhotoHeight-HighRes}">{LinkCloseTag}{/block:Photo}
-                            {block:Photoset}<div class='post-special-content post-photoset center-block'>{Photoset}</div>{/block:Photoset}
+                            {block:Photoset}<div class='post-special-content center-block'>{Photoset}</div>{/block:Photoset}
+                            {block:Panorama}<div class='post-special-content post-panorama center-block'>{LinkOpenTag}<img class='img-responsive center-block panorama' src="{PhotoURL-Panorama}" alt="{PhotoAlt}">{LinkCloseTag}</div>{/block:Panorama}
                             {block:Body}<div class="panel-body post-content">{Body}</div>{/block:Body}
                             {block:Caption}<div class="panel-body">{Caption}</div>{/block:Caption}
                             <div class="panel-footer clearfix">
@@ -435,6 +447,8 @@
                     </div>
                     {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>{/block:IfShowRSSFeed}
                     {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
+                    {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-github-alt fa-lg'></i></a>{/block:IfShowGitHubLink}
+                    {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa-lg icon-soundcloud'></i></a>{/block:IfShowSoundCloudLink}
                     <br /><br />
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
                         {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}'></a>{/block:Followed}
