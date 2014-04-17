@@ -9,6 +9,8 @@
         <meta name="image:Background" content="" />
         <meta name="color:Background Color" content="#fff" />
         <meta name="color:Dark Accent Color" content="#427ea3">
+        <meta name="if:Repeat background horizontally" content="1"/>
+        <meta name="if:Repeat background vertically" content="1"/>
         <meta name="if:Align navbar toggle to left" content="1"/>
         <meta name="if:Inverse Navbar color" content="0"/>
         <meta name="if:Display search" content="1"/>
@@ -51,6 +53,7 @@
         <style>
             body {
                 background-image: url("{image:Background}");
+                background-repeat: {block:IfRepeatBackgroundHorizontally}repeat-x{/block:IfRepeatBackgroundHorizontally} {block:IfRepeatBackgroundVertically}repeat-y{/block:IfRepeatBackgroundVertically};
                 background-color: {color:Background Color}
             }
 
@@ -139,6 +142,15 @@
                 .flex-video {
                     padding-top: 0;
                 }
+            }
+
+            .panel-body {
+                border-bottom: 1px solid #DDD;
+                padding-bottom: 5px; /* 15px seems a little unreasonable and it looks uneven on posts... */
+             }
+
+            .panel-footer {
+                border-top: 0px; /* if a post has a title but no body it'll make two borders, so we'll just put a border on the post body style instead */
             }
 
             .notes {
@@ -444,12 +456,13 @@
                             </div><br />{/block:IfShowArchiveAndRandom}
                             {text:Custom Sidebar HTML}
                         </div>
+                        <div class='panel-footer'>
+                            {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>{/block:IfShowRSSFeed}
+                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
+                            {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-github-alt fa-lg'></i></a>{/block:IfShowGitHubLink}
+                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa-lg icon-soundcloud'></i></a>{/block:IfShowSoundCloudLink}
+                        </div>
                     </div>
-                    {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>{/block:IfShowRSSFeed}
-                    {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
-                    {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-github-alt fa-lg'></i></a>{/block:IfShowGitHubLink}
-                    {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa-lg icon-soundcloud'></i></a>{/block:IfShowSoundCloudLink}
-                    <br /><br />
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
                         {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}'></a>{/block:Followed}
                     </div>{/block:Following}{/block:IfShowFollowing}
