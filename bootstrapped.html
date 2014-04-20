@@ -9,6 +9,7 @@
         <meta name="image:Background" content="" />
         <meta name="color:Background Color" content="#fff" />
         <meta name="color:Dark Accent Color" content="#427ea3">
+        <meta name="if:Sidebar on left" content="0"/>
         <meta name="if:Repeat background horizontally" content="1"/>
         <meta name="if:Repeat background vertically" content="1"/>
         <meta name="if:Align navbar toggle to left" content="1"/>
@@ -43,13 +44,10 @@
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
         {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
         <title>{Title}</title>
-        <link href="//netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+        <link href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet">
         <link href="//cdn.jsdelivr.net/font-entypo/latest/dev/entypo.css" rel="stylesheet">
-        <!--[if lt IE 9]>
-            <script src="//cdn.jsdelivr.net/html5shiv/latest/html5shiv.js"></script>
-            <script src="//cdn.jsdelivr.net/respond/latest/respond.min.js"></script>
-        <![endif]-->
+        <link href="//cdn.jsdelivr.net/fontawesome/latest/css/font-awesome.css" rel="stylesheet"> <!-- needs separate call because fontawesome and entypo's css calls jsdelivr's cdn in a way that causes a 404 -->
+
         <style>
             body {
                 background-image: url("{image:Background}");
@@ -61,9 +59,7 @@
                 content: '"';
             }
 
-            .following {
-                overflow: hidden;
-            }
+            .following { overflow: hidden; } /* image corners don't get cut off if we don't do this */
 
             .followed-avatar {
                 width: 10%;
@@ -83,8 +79,10 @@
                 color: {AccentColor} !important;
             }
 
-            .post img {
-                max-width:100%
+            .post img { max-width: 100%; }
+
+            .accent-link, a.fa-link {
+                vertical-align: middle;
             }
 
             .accent-link:hover, .accent-link:active, .accent-link:focus, .post a:hover, .post a:active, .post a:focus, .pager a:hover, .pager a:active, .pager a:focus, a.fa-link:hover, a.fa-link:focus, a.fa-link:active {
@@ -103,9 +101,7 @@
                 background-color: {color:Dark Accent Color} !important;
             }
 
-            .link-photo-container {
-                padding-bottom: 12px;
-            }
+            .link-photo-container { padding-bottom: 12px; }
 
             .fa-pencil-square-o {
                 position: relative;
@@ -113,9 +109,7 @@
                 font-size: 15px;
             }
 
-            a.fa-link:hover {
-                text-decoration: none !important;
-            }
+            a.fa-link:hover { text-decoration: none !important; }
 
             .flex-video {
                 position: relative;
@@ -149,9 +143,8 @@
                 padding-bottom: 5px; /* 15px seems a little unreasonable and it looks uneven on posts... */
              }
 
-            .panel-footer {
-                border-top: 0px; /* if a post has a title but no body it'll make two borders, so we'll just put a border on the post body style instead */
-            }
+            .panel-footer { border-top: 0px; }
+            /* if a post has a title but no body it'll make two borders, so we'll just put a border on the post body style instead */
 
             .notes {
                 padding-top: 12px;
@@ -180,9 +173,7 @@
                 border: 1px solid #ddd;
             }
 
-            .notes .note .avatar {
-                margin-right: 12px;
-            }
+            .notes .note .avatar { margin-right: 12px; }
 
             .notes .note .action {
                 display: inline;
@@ -198,13 +189,9 @@
                 background-color: {AccentColor} !important;
             }
 
-            .notes .note .action a {
-                color: #fff !important;
-            }
+            .notes .note .action a { color: #fff !important; }
 
-            .note blockquote {
-                margin-left: 80px;
-            }
+            .note blockquote { margin-left: 80px; }
 
             .posts, .posts blockquote {
                 font-size: 14px !important;
@@ -230,17 +217,11 @@
                 user-select: none;
             }
 
-            .post-tag:last-child:after {
-                content: '' !important;
-            }
+            .post-tag:last-child:after { content: '' !important; }
 
-            .more_notes_link_container {
-                padding: 0 !important;
-            }
+            .more_notes_link_container { padding: 0 !important; }
 
-            .more_notes_link_container:hover {
-                background-color: #f5f5f5;
-            }
+            .more_notes_link_container:hover { background-color: #f5f5f5; }
 
             .more_notes_link, .notes_loading {
                 width: 100%;
@@ -253,6 +234,7 @@
                 margin-left: auto !important;
                 margin-right: auto !important;
                 padding-top: 15px;
+                padding-bottom: 10px;
             }
 
             .post-special-content iframe {
@@ -261,33 +243,20 @@
                 margin-right: auto !important;
             }
 
-            .photoset { /* the way tumblr does photosets is so weird... */
-                width: 94% !important;
-            }
+            .photoset { width: 94% !important; }
+            /* i feel like this is the wrong way to do it. any alternate ways of making photosets center correctly is welcome */
 
-            .quote {
-                font-family: serif;
-            }
+            .quote { font-family: serif; }
 
-            .quote.quote-short {
-                font-size: 22px !important;
-            }
+            .quote.quote-short { font-size: 22px !important; }
 
-            .quote.quote-long {
-                font-size: 13px !important;
-            }
+            .quote.quote-long { font-size: 13px !important; }
 
-            .avatar {
-                border-radius: 5px;
-            }
+            .avatar { border-radius: 5px; }
 
-            .post-panorama {
-                padding-top: 0px;
-            }
+            .post-panorama { padding-top: 0px; }
 
-            .panorama {
-                overflow: hidden;
-            }
+            .panorama { overflow: hidden; }
 
             {block:IfAlignNavbarToggleToLeft}.navbar-toggle {
                 float: left!important;
@@ -295,10 +264,8 @@
                 margin-left: 15px;
             }{/block:IfAlignNavbarToggleToLeft}
 
-            .post-content img {
-                display: block;
-                /* this is the way that it does it on tumblr's dashboard, i don't see a good reason to do it differently */
-            }
+            .post-content img { display: block; }
+            /* this is the way that it does it on tumblr's dashboard, many posts look different from intended if the picture doesn't cut through the text */
 
             .like_button, .reblog_button {
                 display: inline-block !important;
@@ -370,6 +337,32 @@
         </nav>
         <div class="container">
             <div class='row'>
+                {block:IfSidebarOnLeft}<div class='col-lg-4 sidebar'>
+                    <div class="blog-details panel panel-default">
+                        <div class='panel-body'>
+                            {block:IfShowPortrait}<div class="blog-avatar center-block">
+                                <img class='img-responsive img-rounded center-block' alt='{Title} avatar' data-src="holder.js/128x128" src="{PortraitURL-128}">
+                                <br />
+                            </div>{/block:IfShowPortrait}
+                            {block:Description}<p class='blog-description center-block'>{Description}</p>{/block:Description}
+                            <a class='btn btn-lg btn-block btn-primary follow-button' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />
+                            {block:IfShowArchiveAndRandom}<div class='btn-group btn-group-lg btn-group-justified'>
+                                <a href='/archive' class='btn btn-default' style='border-right: 0px;'><i class='fa fa-clock-o'></i> {lang:Archive}</a>
+                                <a href='/random' class='btn btn-default'><i class='fa fa-random'></i> {lang:Random}</a>
+                            </div><br />{/block:IfShowArchiveAndRandom}
+                            {text:Custom Sidebar HTML}
+                        </div>
+                        <div class='panel-footer'>
+                            {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>{/block:IfShowRSSFeed}
+                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
+                            {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-github-alt fa-lg'></i></a>{/block:IfShowGitHubLink}
+                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa-lg icon-soundcloud'></i></a>{/block:IfShowSoundCloudLink}
+                        </div>
+                    </div>
+                    {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
+                        {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}'></a>{/block:Followed}
+                    </div>{/block:Following}{/block:IfShowFollowing}
+                </div>{/block:IfSidebarOnLeft}
                 <div class='col-lg-8'>
                     {block:TagPage}<h2 style='color: {AccentColor}; margin-top: 0px;'>{lang:Showing posts tagged Tag 2} <a class='small fa fa-link' href='/tagged/{URLSafeTag}'></a></h2>{/block:TagPage}
                     {block:SearchPage}<h2 style='color: {AccentColor}; margin-top: 0px;'>{lang:Showing SearchResultCount results for SearchQuery 2} <a class='small fa fa-link' href='/search?q={URLSafeSearchQuery}'></a></h2>{/block:SearchPage}
@@ -462,7 +455,7 @@
                         {/block:NextPage}
                     </ul>{/block:Pagination}
                 </div>
-                <div class='col-lg-4 sidebar'>
+                {block:IfNotSidebarOnLeft}<div class='col-lg-4 sidebar'>
                     <div class="blog-details panel panel-default">
                         <div class='panel-body'>
                             {block:IfShowPortrait}<div class="blog-avatar center-block">
@@ -487,10 +480,12 @@
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
                         {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}'></a>{/block:Followed}
                     </div>{/block:Following}{/block:IfShowFollowing}
-                </div>
+                </div>{/block:IfSidebarOnLeft}
             </div>
         </div>
-        <script src="//cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
+        <!--[if lt IE 9]>
+            <script src="//cdn.jsdelivr.net/g/html5shiv,respond"></script>
+        <![endif]-->
+        <script src="//cdn.jsdelivr.net/g/jquery,bootstrap"></script>
     </body>
 </html>
