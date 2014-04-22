@@ -7,15 +7,19 @@
         <meta name="text:SoundCloud Username" content="" />
         <meta name="text:GitHub Username" content="" />
         <meta name="text:Custom Sidebar HTML" content="" />
+        
         <meta name="image:Background" content="" />
         <meta name="color:Background Color" content="#fff" />
         <meta name="color:Dark Accent Color" content="#427ea3">
-        <meta name="if:Sidebar on left" content="0"/>
-        <meta name="if:Repeat background horizontally" content="1"/>
-        <meta name="if:Repeat background vertically" content="1"/>
-        <meta name="if:Align navbar toggle to left" content="1"/>
-        <meta name="if:Inverse Navbar color" content="0"/>
-        <meta name="if:Display search" content="1"/>
+        
+        <meta name="if:Use Bold Titles" content="0" />
+        <meta name="if:Sidebar on Left" content="0"/>
+        <meta name="if:Repeat Background Horizontally" content="1"/>
+        <meta name="if:Repeat Background Vertically" content="1"/>
+        <meta name="if:Align Navbar Toggle to Left" content="1"/>
+        <meta name="if:Inverse Navbar Color" content="0"/>
+        <meta name="if:Display Search" content="1"/>
+        
         <meta name="if:Show Portrait" content="1"/>
         <meta name="if:Show Follow Me" content="1"/>
         <meta name="if:Show Archive and Random" content="1"/>
@@ -145,6 +149,10 @@
                 border-bottom: 1px solid #DDD;
                 padding-bottom: 5px; /* 15px seems a little unreasonable and it looks uneven on posts... */
              }
+             
+            {block:IfUseBoldTitles}.panel-title {
+                font-weight: bold;
+            }{/block:IfUseBoldTitles}
 
             .panel-footer { border-top: 0px; }
             /* if a post has a title but no body it'll make two borders, so we'll just put a border on the post body style instead */
