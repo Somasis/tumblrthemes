@@ -10,7 +10,11 @@ custom themes for tumblr. mods, original themes, you name it, if i made it, it i
     - ashleymod is a modification of [Ashley](https://github.com/jxnblk/ashley), originally by [jxnblk](https://github.com/jxnblk).
     - opticamod is a modification of [Optica](https://www.tumblr.com/theme/37310), originally by [kcreate](http://k-create.com).
 
-## installation
+## bootstrapped is now on tumblr's theme garden!
+
+click [here](https://www.tumblr.com/theme/38735) to go install it!    
+
+## installation of other themes
 
 1. go to your [tumblr dashboard](https://tumblr.com/dashboard)
 2. choose the blog you want to customize from the picker at the top of the sidebar.
