@@ -17,6 +17,7 @@
         <meta name="if:Inverse Navbar color" content="0"/>
         <meta name="if:Display search" content="1"/>
         <meta name="if:Show Portrait" content="1"/>
+        <meta name="if:Show Follow Me" content="1"/>
         <meta name="if:Show Archive and Random" content="1"/>
         <meta name="if:Show Following" content="0"/>
         <meta name="if:Show RSS Feed" content="1"/>
@@ -348,7 +349,7 @@
                                 <br />
                             </div>{/block:IfShowPortrait}
                             {block:Description}<p class='blog-description center-block'>{Description}</p>{/block:Description}
-                            <a class='btn btn-lg btn-block btn-primary follow-button' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />
+                            {block:IfShowFollowMe}<a class='btn btn-lg btn-block btn-primary follow-button' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />{/block:IfShowFollowMe}
                             {block:IfShowArchiveAndRandom}<div class='btn-group btn-group-lg btn-group-justified'>
                                 <a href='/archive' class='btn btn-default' style='border-right: 0px;'><i class='fa fa-clock-o'></i> {lang:Archive}</a>
                                 <a href='/random' class='btn btn-default'><i class='fa fa-random'></i> {lang:Random}</a>
@@ -469,7 +470,7 @@
                                 <br />
                             </div>{/block:IfShowPortrait}
                             {block:Description}<p class='blog-description center-block'>{Description}</p>{/block:Description}
-                            <a class='btn btn-lg btn-block btn-primary follow-button' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />
+                            {block:IfShowFollowMe}<a class='btn btn-lg btn-block btn-primary follow-button' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />{/block:IfShowFollowMe}
                             {block:IfShowArchiveAndRandom}<div class='btn-group btn-group-lg btn-group-justified'>
                                 <a href='/archive' class='btn btn-default' style='border-right: 0px;'><i class='fa fa-clock-o'></i> {lang:Archive}</a>
                                 <a href='/random' class='btn btn-default'><i class='fa fa-random'></i> {lang:Random}</a>
