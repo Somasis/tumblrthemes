@@ -5,7 +5,12 @@
         <meta name="text:Twitter Username" content="" />
         <meta name="text:Facebook Username" content="" />
         <meta name="text:SoundCloud Username" content="" />
+        <meta name="text:Bandcamp URL" content="" />
         <meta name="text:GitHub Username" content="" />
+        <meta name="text:Skype Username" content="" />
+        <meta name="text:LastFM Username" content="" />
+        <meta name="text:YouTube Username" content="" />
+        <meta name="text:Custom Sidebar Footer HTML" content="" />
         <meta name="text:Custom Sidebar HTML" content="" />
         
         <meta name="image:Background" content="" />
@@ -20,6 +25,7 @@
         <meta name="if:Inverse Navbar Color" content="0"/>
         <meta name="if:Display Search" content="1"/>
         
+        <meta name="if:Show Post Actions" content="1"/>
         <meta name="if:Show Portrait" content="1"/>
         <meta name="if:Show Follow Me" content="1"/>
         <meta name="if:Show Archive and Random" content="1"/>
@@ -29,6 +35,10 @@
         <meta name="if:Show Facebook Link" content="0"/>
         <meta name="if:Show SoundCloud Link" content="0"/>
         <meta name="if:Show GitHub Link" content="0"/>
+        <meta name="if:Show Skype Username" content="0"/>
+        <meta name="if:Show LastFM Link" content="0"/>
+        <meta name="if:Show Bandcamp Link" content="0"/>
+        <meta name="if:Show YouTube Link" content="0"/>
 
         <!-- meta name="if:Show Post Type" content="0" -->
         <!--    post type icon idea:
@@ -146,16 +156,13 @@
             }
 
             .panel-body {
-                border-bottom: 1px solid #DDD;
-                padding-bottom: 5px; /* 15px seems a little unreasonable and it looks uneven on posts... */
+                margin-top: -1px;
+                padding-top: 16px;
              }
              
             {block:IfUseBoldTitles}.panel-title {
                 font-weight: bold;
             }{/block:IfUseBoldTitles}
-
-            .panel-footer { border-top: 0px; }
-            /* if a post has a title but no body it'll make two borders, so we'll just put a border on the post body style instead */
 
             .notes {
                 padding-top: 12px;
@@ -212,7 +219,7 @@
                 text-decoration: none !important;
             }
 
-            .dot:after, .post-timestamp:after, .post-play-count:after, .separator-before:before, .post-notes:after, .post-reblogged-from:after {
+            .dot:after, .post-timestamp:after, .post-play-count:after, .separator-before:before, .post-notes:after {
                 content: '\00a0\00B7\00a0';
                 -webkit-user-select: none;
                 -moz-user-select: none;
@@ -407,17 +414,18 @@
 
                             </div>{/block:Link}
                             {block:Answer}<div class="panel-body">
-                                <div class="media">
-                                    <img class="avatar pull-left media-object" src="{AskerPortraitURL-48}">
-                                    <div class='media-body'>
-                                        <div class="well">
-                                            <h4 class='media-heading'>{lang:Asker asked 2}</h4>
-                                            {Question}
+                                <span class='ask'>
+                                    <div class="media">
+                                        <img class="avatar pull-left media-object" src="{AskerPortraitURL-48}">
+                                        <div class='media-body'>
+                                            <div class="well">
+                                                <h4 class='media-heading'>{lang:Asker asked 2}</h4>
+                                                {Question}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class='media'>
-                                    <img class="avatar pull-right media-object" src="{block:Answerer}{AnswererPortraitURL-48}{/block:Answerer}{block:NotReblog}{PostAuthorPortraitURL-48}{/block:NotReblog}">
+                                    <div class='media'>
+                                        <img class="avatar pull-right media-object" src="{block:Answerer}{AnswererPortraitURL-48}{/block:Answerer}{block:NotReblog}{PostAuthorPortraitURL-48}{/block:NotReblog}">
                                         <div class='media-body'>
                                             <div class="well">
                                                 <h4 class='media-heading'><a href='{PostAuthorURL}'>{Answerer}{block:NotReblog}{PostAuthorName}{/block:NotReblog}</a> answered</h4>
@@ -425,7 +433,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                {block:RebloggedFrom}<div class='answer-captions'>{Replies}</div>{/block:RebloggedFrom}
+                                </span>
+                                {block:RebloggedFrom}<span class='answer-captions'>{Replies}</span>{/block:RebloggedFrom}
                             </div>{/block:Answer}
                             {block:Video}<div class='post-special-content flex-video'>{VideoEmbed-500}</div>{/block:Video}
                             {block:Audio}<div class='post-special-content center-block'>{block:AudioEmbed}{AudioEmbed color="white"}{/block:AudioEmbed}</div>{/block:Audio}
@@ -436,8 +445,8 @@
                             {block:Body}<div class="panel-body post-content">{Body}</div>{/block:Body}
                             {block:Caption}<div class="panel-body">{Caption}</div>{/block:Caption}
                             <div class="panel-footer clearfix">
-                                <div class='pull-left'>{block:RebloggedFrom}<span class='post-reblogged-from'><a href='{ReblogParentURL}' title='{lang:Reblogged from ReblogParentName}' <i class='fa fa-retweet'></i></a></span>{/block:RebloggedFrom}{block:ContentSource}<span class='post-source'><a title='{lang:Originally from ReblogRootName}' href='{SourceURL}'><i class='fa fa-external-link-square'></i></a></span>{/block:ContentSource}{block:HasTags}<span class='post-tags {block:ContentSource}separator-before{/block:ContentSource}'><i class='fa fa-tags'></i>&nbsp;{block:Tags}<span class='post-tag'><a href='{TagURL}' class='post-tag'>{Tag}</a></span>{/block:Tags}</span>{/block:HasTags}</div>
-                                <span class='pull-right'>{block:Date}<span class='post-timestamp' title='{lang:Posted at FormattedTime}'>{TimeAgo}</span>{/block:Date}{block:PlayCount}<span class='post-play-count'>{block:ExternalAudio}<a href='{ExternalAudioURL}'>{/block:ExternalAudio}<span class='badge'>{PlayCountWithLabel}</span>{block:ExternalAudio}</a>{/block:ExternalAudio}</span>{/block:PlayCount}{block:NoteCount}<span class='post-notes'><a href='{Permalink}#notes'><span class="badge">{NoteCountWithLabel}</span></a></span>{/block:NoteCount}<span class='post-permalink'><a {block:Title}title='{Title}'{/block:Title} href='{Permalink}'><i class='fa fa-link'></i></a></span><span class='dot'></span>{LikeButton}{ReblogButton}</span>
+                                <div class='pull-left'>{block:RebloggedFrom}<span class='post-reblogged-from'><a href='{ReblogParentURL}' title='{lang:Reblogged from ReblogParentName}' <i class='fa fa-retweet'></i></a></span>{/block:RebloggedFrom}{block:ContentSource}<span class='dot'></span><span class='post-source'><a title='{lang:Originally from ReblogRootName}' href='{SourceURL}'><i class='fa fa-external-link-square'></i></a></span>{/block:ContentSource}{block:HasTags}<span class='post-tags {block:ContentSource}separator-before{/block:ContentSource} {block:RebloggedFrom}separator-before{/block:RebloggedFrom}'><i class='fa fa-tags'></i>&nbsp;{block:Tags}<span class='post-tag'><a href='{TagURL}' class='post-tag'>{Tag}</a></span>{/block:Tags}</span>{/block:HasTags}</div>
+                                <span class='pull-right'>{block:Date}<span class='post-timestamp' title='{lang:Posted at FormattedTime}'>{TimeAgo}</span>{/block:Date}{block:PlayCount}<span class='post-play-count'>{block:ExternalAudio}<a href='{ExternalAudioURL}'>{/block:ExternalAudio}<span class='badge'>{PlayCountWithLabel}</span>{block:ExternalAudio}</a>{/block:ExternalAudio}</span>{/block:PlayCount}{block:NoteCount}<span class='post-notes'><a href='{Permalink}#notes'><span class="badge">{NoteCountWithLabel}</span></a></span>{/block:NoteCount}<span class='post-permalink'><a {block:Title}title='{Title}'{/block:Title} href='{Permalink}'><i class='fa fa-link'></i></a></span>{block:IfShowPostActions}<span class='dot'></span>{LikeButton}<span class='dot'></span>{ReblogButton}{/block:IfShowPostActions}</span>
                             </div>
                         </div>
                         {block:PostNotes}<div id='notes'>
@@ -486,11 +495,16 @@
                             {text:Custom Sidebar HTML}
                         </div>
                         <div class='panel-footer'>
-                            {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>&nbsp;{/block:IfShowRSSFeed}
-                            {block:IfShowFacebookLink}<a class='accent-link' href='//facebook.com/{text:Facebook Username}' alt='Facebook - {text:Facebook Username}'><i class='fa fa-facebook-square fa-lg'></i></a>&nbsp;{/block:IfShowFacebookLink}
-                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>&nbsp;{/block:IfShowTwitterLink}
-                            {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-github-alt fa-lg'></i></a>&nbsp;{/block:IfShowGitHubLink}
-                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa-lg icon-soundcloud'></i></a>&nbsp;{/block:IfShowSoundCloudLink}
+                            {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>{/block:IfShowRSSFeed}
+                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
+                            {block:IfShowFacebookLink}<a class='accent-link' href='//facebook.com/{text:Facebook Username}' alt='Facebook - {text:Facebook Username}'><i class='fa fa-facebook-square fa-lg'></i></a>{/block:IfShowFacebookLink}
+                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa-lg icon-soundcloud'></i></a>{/block:IfShowSoundCloudLink}
+                            {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-github-alt fa-lg'></i></a>{/block:IfShowGitHubLink}
+                            {block:IfShowSkypeUsername}<a class='accent-link' href='skype:{text:Skype Username}' alt='Skype - {text:Skype Username}'><i class='fa fa-skype fa-lg'></i></a>{/block:IfShowSkypeUsername}
+                            {block:IfShowLastFmLink}<a class='accent-link' href='//last.fm/{text:LastFM Username}' alt='LastFM - {text:LastFM Username}'><i class='fa-lg icon-lastfm'></i></a>{/block:IfShowLastFmLink}
+                            {block:IfShowBandcampLink}<a class='accent-link' href='{text:Bandcamp URL}' alt='Bandcamp'><i class='fa fa-lg fa-music'></i></a>{/block:IfShowBandcampLink}
+                            {block:IfShowYouTubeLink}<a class='accent-link' href='//youtube.com/user/{text:YouTube Username}' alt='YouTube - {text:YouTube Username}'><i class='fa fa-youtube-play'></i></a>{/block:IfShowYouTubeLink}
+                            {text:Custom Sidebar Footer HTML}
                         </div>
                     </div>
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
