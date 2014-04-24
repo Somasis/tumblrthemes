@@ -98,7 +98,7 @@
 
             .post img { max-width: 100%; }
 
-            .accent-link, a.fa-link {
+            a.fa-link {
                 vertical-align: middle;
             }
 
@@ -376,16 +376,25 @@
                             {text:Custom Sidebar HTML}
                         </div>
                         <div class='panel-footer'>
-                            {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>&nbsp;{/block:IfShowRSSFeed}
-                            {block:IfShowFacebookLink}<a class='accent-link' href='//facebook.com/{text:Facebook Username}' alt='Facebook - {text:Facebook Username}'><i class='fa fa-facebook-square fa-lg'></i></a>&nbsp;{/block:IfShowFacebookLink}
-                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>&nbsp;{/block:IfShowTwitterLink}
-                            {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-github-alt fa-lg'></i></a>&nbsp;{/block:IfShowGitHubLink}
-                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa-lg icon-soundcloud'></i></a>&nbsp;{/block:IfShowSoundCloudLink}
+                            {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>{/block:IfShowRSSFeed}
+                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
+                            {block:IfShowFacebookLink}<a class='accent-link' href='//facebook.com/{text:Facebook Username}' alt='Facebook - {text:Facebook Username}'><i class='fa fa-facebook-square fa-lg'></i></a>{/block:IfShowFacebookLink}
+                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa-lg icon-soundcloud'></i></a>{/block:IfShowSoundCloudLink}
+                            {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-github-alt fa-lg'></i></a>{/block:IfShowGitHubLink}
+                            {block:IfShowSkypeUsername}<a class='accent-link' href='skype:{text:Skype Username}' alt='Skype - {text:Skype Username}'><i class='fa fa-skype fa-lg'></i></a>{/block:IfShowSkypeUsername}
+                            {block:IfShowLastFmLink}<a class='accent-link' href='//last.fm/{text:LastFM Username}' alt='LastFM - {text:LastFM Username}'><i class='fa-lg icon-lastfm'></i></a>{/block:IfShowLastFmLink}
+                            {block:IfShowBandcampLink}<a class='accent-link' href='{text:Bandcamp URL}' alt='Bandcamp'><i class='fa fa-lg fa-music'></i></a>{/block:IfShowBandcampLink}
+                            {block:IfShowYouTubeLink}<a class='accent-link' href='//youtube.com/user/{text:YouTube Username}' alt='YouTube - {text:YouTube Username}'><i class='fa fa-youtube-play'></i></a>{/block:IfShowYouTubeLink}
+                            {text:Custom Sidebar Footer HTML}
                         </div>
                     </div>
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
                         {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}'></a>{/block:Followed}
                     </div>{/block:Following}{/block:IfShowFollowing}
+                    <p class='text-right small'>
+                        {lang:Powered by Tumblr 2}<br />
+                        <a href='//www.tumblr.com/theme/38735'><strong>{block:English}This blog is Bootstrapped{/block:English}{block:NotEnglish}Bootstrapped{/block:NotEnglish}</strong>.</a> - <a href='//www.tumblr.com/theme/38735'>{lang:Install this theme}</a>
+                    </p>
                 </div>
                 <!-- end sidebar -->{/block:IfSidebarOnLeft}
                 <div class='col-lg-8'>
@@ -514,6 +523,10 @@
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
                         {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}'></a>{/block:Followed}
                     </div>{/block:Following}{/block:IfShowFollowing}
+                    <p class='text-right small'>
+                        {lang:Powered by Tumblr 2}<br />
+                        <a href='//www.tumblr.com/theme/38735'><strong>{block:English}This blog is Bootstrapped{/block:English}{block:NotEnglish}Bootstrapped{/block:NotEnglish}</strong>.</a> - <a href='//www.tumblr.com/theme/38735'>{lang:Install this theme}</a>
+                    </p>
                 </div>
                 <!-- end sidebar -->{/block:IfSidebarOnLeft}
             </div>
