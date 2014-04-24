@@ -24,6 +24,7 @@
         <meta name="if:Repeat Background Vertically" content="1"/>
         <meta name="if:Align Navbar Toggle to Left" content="1"/>
         <meta name="if:Inverse Navbar Color" content="0"/>
+        <meta name="if:Panels with slight transparency" content="1"/>
         <meta name="if:Display Search" content="1"/>
         
         <meta name="if:Show Post Actions" content="1"/>
@@ -85,9 +86,9 @@
                 display: inline-block;
             }
 
-            .navbar-default,.sidebar {
+            {block:IfPanelsWithSlightTransparency}.navbar-default,.sidebar {
                 opacity: 0.95;
-            }
+            }{/block:IfPanelsWithSlightTransparency}
 
             .form-control:focus {
                 border-color: {AccentColor} !important;
