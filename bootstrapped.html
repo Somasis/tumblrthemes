@@ -11,37 +11,39 @@
         <meta name="text:Steam Profile Link" content="" />
         <meta name="text:LastFM Username" content="" />
         <meta name="text:YouTube Username" content="" />
+        <meta name="text:Custom Head HTML" content="" />
         <meta name="text:Custom Sidebar Footer HTML" content="" />
         <meta name="text:Custom Sidebar HTML" content="" />
-        
         <meta name="image:Background" content="" />
         <meta name="color:Background Color" content="#fff" />
         <meta name="color:Dark Accent Color" content="#427ea3">
         
         <meta name="if:Use Bold Titles" content="0" />
-        <meta name="if:Sidebar on Left" content="0"/>
-        <meta name="if:Repeat Background Horizontally" content="1"/>
-        <meta name="if:Repeat Background Vertically" content="1"/>
-        <meta name="if:Align Navbar Toggle to Left" content="1"/>
-        <meta name="if:Inverse Navbar Color" content="0"/>
-        <meta name="if:Panels with slight transparency" content="1"/>
-        <meta name="if:Display Search" content="1"/>
+        <meta name="if:Sidebar on Left" content="0" />
+        <meta name="if:Repeat Background Horizontally" content="1" />
+        <meta name="if:Repeat Background Vertically" content="1" />
+        <meta name="if:Align Navbar Toggle to Left" content="1" />
+        <meta name="if:Inverse Navbar Color" content="0" />
+        <meta name="if:Panels with slight transparency" content="1" />
+        <meta name="if:Display Search" content="1" />
+        <meta name="if:Fluid" content="0" />
         
-        <meta name="if:Show Post Actions" content="1"/>
-        <meta name="if:Show Portrait" content="1"/>
-        <meta name="if:Show Follow Me" content="1"/>
-        <meta name="if:Show Archive and Random" content="1"/>
-        <meta name="if:Show Following" content="0"/>
-        <meta name="if:Show RSS Feed" content="1"/>
-        <meta name="if:Show Twitter Link" content="0"/>
-        <meta name="if:Show Facebook Link" content="0"/>
-        <meta name="if:Show SoundCloud Link" content="0"/>
-        <meta name="if:Show GitHub Link" content="0"/>
-        <meta name="if:Show Skype Username" content="0"/>
-        <meta name="if:Show Steam Link" content="0"/>
-        <meta name="if:Show LastFM Link" content="0"/>
-        <meta name="if:Show Bandcamp Link" content="0"/>
-        <meta name="if:Show YouTube Link" content="0"/>
+        <meta name="if:Show Post Actions" content="1" />
+        <meta name="if:Show Portrait" content="1" />
+        <meta name="if:Show Follow Me" content="1" />
+        <meta name="if:Show Archive and Random" content="1" />
+        <meta name="if:Show Following" content="0" />
+        <meta name="if:Show Theme Credit" content="1" />
+        <meta name="if:Show RSS Feed" content="1" />
+        <meta name="if:Show Twitter Link" content="0" />
+        <meta name="if:Show Facebook Link" content="0" />
+        <meta name="if:Show SoundCloud Link" content="0" />
+        <meta name="if:Show GitHub Link" content="0" />
+        <meta name="if:Show Skype Username" content="0" />
+        <meta name="if:Show Steam Link" content="0" />
+        <meta name="if:Show LastFM Link" content="0" />
+        <meta name="if:Show Bandcamp Link" content="0" />
+        <meta name="if:Show YouTube Link" content="0" />
 
         <!-- meta name="if:Show Post Type" content="0" -->
         <!--    post type icon idea:
@@ -56,7 +58,7 @@
                     {block:Text}<i class='fa-font' alt='{lang:Text post}'></i>{/block:Text}
                     etc.
         -->
-        
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -109,14 +111,14 @@
                 color: {color:Dark Accent Color} !important;
             }
 
-            .link-button, .follow-button {
+            .link-btn, .follow-btn {
                 border-color: rgba(0,0,0,.075);
                 background-color: {AccentColor} !important;
                 color: #fff !important;
             }
 
-            .link-button:hover, .link-button:active, .link-button:focus,
-            .follow-button:hover, .follow-button:active, .follow-button:focus {
+            .link-btn:hover, .link-btn:active, .link-btn:focus,
+            .follow-btn:hover, .follow-btn:active, .follow-btn:focus {
                 border-color: rgba(0,0,0,.125);
                 background-color: {color:Dark Accent Color} !important;
             }
@@ -165,6 +167,7 @@
             .panel-body {
                 margin-top: -1px;
                 padding-top: 16px;
+                word-wrap: break-word;
              }
              
             {block:IfUseBoldTitles}.panel-title {
@@ -308,7 +311,7 @@
                 height: 15px;
             }
             
-            .reblog_button svg {
+            .reblog svg {
                 width: 15px;
                 height: 15px;
             }
@@ -325,10 +328,11 @@
 
             {CustomCSS}
         </style>
+        {text:Custom Head HTML}
     </head>
     <body>
         <nav class="navbar navbar-default navbar-static-top {block:IfInverseNavbarColor}navbar-inverse{/block:IfInverseNavbarColor}" role="navigation">
-            <div class="container">
+            <div class="container{block:IfFluid}-fluid{/block:IfFluid}">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">{lang:Navigate}</span>
@@ -360,18 +364,18 @@
                 </div>
             </div>
         </nav>
-        <div class="container">
+        <div class="container{block:IfFluid}-fluid{/block:IfFluid}">
             <div class='row'>
                 {block:IfSidebarOnLeft}<!-- begin sidebar -->
                 <div class='col-lg-4 sidebar'>
                     <div class="blog-details panel panel-default">
                         <div class='panel-body'>
                             {block:IfShowPortrait}<div class="blog-avatar center-block">
-                                <img class='img-responsive img-rounded center-block' alt='{Title} avatar' data-src="holder.js/128x128" src="{PortraitURL-128}">
+                                <img class='img-responsive img-rounded center-block' alt='{Title}{block:English} avatar{/block:English}' data-src="holder.js/128x128" src="{PortraitURL-128}">
                                 <br />
                             </div>{/block:IfShowPortrait}
                             {block:Description}<p class='blog-description center-block'>{Description}</p>{/block:Description}
-                            {block:IfShowFollowMe}<a class='btn btn-lg btn-block btn-primary follow-button' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />{/block:IfShowFollowMe}
+                            {block:IfShowFollowMe}<a class='btn btn-lg btn-block btn-primary follow-btn' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />{/block:IfShowFollowMe}
                             {block:IfShowArchiveAndRandom}<div class='btn-group btn-group-lg btn-group-justified'>
                                 <a href='/archive' class='btn btn-default' style='border-right: 0px;'><i class='fa fa-clock-o'></i> {lang:Archive}</a>
                                 <a href='/random' class='btn btn-default'><i class='fa fa-random'></i> {lang:Random}</a>
@@ -395,9 +399,9 @@
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
                         {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}'></a>{/block:Followed}
                     </div>{/block:Following}{/block:IfShowFollowing}
-                    <p class='text-right small'>
-                        <a class='accent-link' href='//www.tumblr.com/theme/38735'><strong>{block:English}This blog is Bootstrapped{/block:English}{block:NotEnglish}Bootstrapped{/block:NotEnglish}</strong>.</a> - <a class='accent-link' href='//www.tumblr.com/theme/38735'>{lang:Install this theme}</a>
-                    </p>
+                    {block:IfShowThemeCredit}<p class='text-right small credit'>
+                        <a class='accent-link' href='//www.tumblr.com/theme/38735'><strong>{block:English}This tumblr is Bootstrapped{/block:English}{block:NotEnglish}{lang:Install this theme}{/block:NotEnglish}</strong>.</a>
+                    </p>{/block:IfShowThemeCredit}
                 </div>
                 <!-- end sidebar -->{/block:IfSidebarOnLeft}
                 <div class='col-lg-8'>
@@ -422,8 +426,8 @@
                                     {block:Thumbnail}<div class='link-photo-container center-block col-lg-3'><a href='{URL}'>
                                         <img class='link-photo img-thumbnail' src='{Thumbnail}'>
                                     </a></div>{/block:Thumbnail}
-                                    <div class='link-button-container col-lg-12 {block:Thumbnail}col-lg-9{/block:Thumbnail}'>
-                                        <a href='{URL}' {Target} class='btn btn-primary btn-block btn-lg link-button' style='color: #ffffff !important;white-space:normal'>{Name}</a><br />
+                                    <div class='link-btn-container col-lg-12 {block:Thumbnail}col-lg-9{/block:Thumbnail}'>
+                                        <a href='{URL}' {Target} class='btn btn-primary btn-block btn-lg link-btn' style='color: #ffffff !important;white-space:normal'>{Name}</a><br />
                                     </div>
                                 </div>
                                 {block:Description}{Description}{/block:Description}
@@ -462,7 +466,7 @@
                             {block:Caption}<div class="panel-body">{Caption}</div>{/block:Caption}
                             <div class="panel-footer clearfix">
                                 <div class='pull-left'>{block:RebloggedFrom}<span class='post-reblogged-from'><a href='{ReblogParentURL}' title='{lang:Reblogged from ReblogParentName}' <i class='fa fa-retweet'></i></a></span>{/block:RebloggedFrom}{block:ContentSource}<span class='dot'></span><span class='post-source'><a title='{lang:Originally from ReblogRootName}' href='{SourceURL}'><i class='fa fa-external-link-square'></i></a></span>{/block:ContentSource}{block:HasTags}<span class='post-tags {block:ContentSource}separator-before{/block:ContentSource} {block:RebloggedFrom}separator-before{/block:RebloggedFrom}'><i class='fa fa-tags'></i>&nbsp;{block:Tags}<span class='post-tag'><a href='{TagURL}' class='post-tag'>{Tag}</a></span>{/block:Tags}</span>{/block:HasTags}</div>
-                                <span class='pull-right'>{block:Date}<span class='post-timestamp' title='{lang:Posted at FormattedTime}'>{TimeAgo}</span>{/block:Date}{block:PlayCount}<span class='post-play-count'>{block:ExternalAudio}<a href='{ExternalAudioURL}'>{/block:ExternalAudio}<span class='badge'>{PlayCountWithLabel}</span>{block:ExternalAudio}</a>{/block:ExternalAudio}</span>{/block:PlayCount}{block:NoteCount}<span class='post-notes'><a href='{Permalink}#notes'><span class="badge">{NoteCountWithLabel}</span></a></span>{/block:NoteCount}<span class='post-permalink'><a {block:Title}title='{Title}'{/block:Title} href='{Permalink}'><i class='fa fa-link'></i></a></span>{block:IfShowPostActions}<span class='dot'></span>{LikeButton}<span class='dot'></span>{ReblogButton}{/block:IfShowPostActions}</span>
+                                <span class='pull-right'>{block:Date}<span class='post-timestamp' title='{lang:Posted at FormattedTime}'>{TimeAgo}</span>{/block:Date}{block:PlayCount}<span class='post-play-count'>{block:ExternalAudio}<a href='{ExternalAudioURL}'>{/block:ExternalAudio}<span class='badge'>{PlayCountWithLabel}</span>{block:ExternalAudio}</a>{/block:ExternalAudio}</span>{/block:PlayCount}{block:NoteCount}<span class='post-notes'><a href='{Permalink}#notes'><span class="badge">{NoteCountWithLabel}</span></a></span>{/block:NoteCount}<span class='post-permalink'><a {block:Title}title='{Title}'{/block:Title} href='{Permalink}'><i class='fa fa-link'></i></a></span>{block:IfShowPostActions}{block:Date}<span class='dot'></span>{LikeButton}<span class='dot'></span>{ReblogButton}{/block:Date}{/block:IfShowPostActions}</span>
                             </div>
                         </div>
                         {block:PostNotes}<div id='notes'>
@@ -499,11 +503,11 @@
                     <div class="blog-details panel panel-default">
                         <div class='panel-body'>
                             {block:IfShowPortrait}<div class="blog-avatar center-block">
-                                <img class='img-responsive img-rounded center-block' alt='{Title} avatar' data-src="holder.js/128x128" src="{PortraitURL-128}">
+                                <img class='img-responsive img-rounded center-block' alt='{Title}{block:English} avatar{/block:English}' data-src="holder.js/128x128" src="{PortraitURL-128}">
                                 <br />
                             </div>{/block:IfShowPortrait}
                             {block:Description}<p class='blog-description center-block'>{Description}</p>{/block:Description}
-                            {block:IfShowFollowMe}<a class='btn btn-lg btn-block btn-primary follow-button' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />{/block:IfShowFollowMe}
+                            {block:IfShowFollowMe}<a class='btn btn-lg btn-block btn-primary follow-btn' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />{/block:IfShowFollowMe}
                             {block:IfShowArchiveAndRandom}<div class='btn-group btn-group-lg btn-group-justified'>
                                 <a href='/archive' class='btn btn-default' style='border-right: 0px;'><i class='fa fa-clock-o'></i> {lang:Archive}</a>
                                 <a href='/random' class='btn btn-default'><i class='fa fa-random'></i> {lang:Random}</a>
@@ -527,9 +531,9 @@
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
                         {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}'></a>{/block:Followed}
                     </div>{/block:Following}{/block:IfShowFollowing}
-                    <p class='text-right small'>
-                        <a class='accent-link' href='//www.tumblr.com/theme/38735'><strong>{block:English}This blog is Bootstrapped{/block:English}{block:NotEnglish}Bootstrapped{/block:NotEnglish}</strong>.</a> - <a class='accent-link' href='//www.tumblr.com/theme/38735'>{lang:Install this theme}</a>
-                    </p>
+                    {block:IfShowThemeCredit}<p class='text-right small credit'>
+                        <a class='accent-link' href='//www.tumblr.com/theme/38735'><strong>{block:English}This tumblr is Bootstrapped{/block:English}{block:NotEnglish}{lang:Install this theme}{/block:NotEnglish}</strong>.</a>
+                    </p>{/block:IfShowThemeCredit}
                 </div>
                 <!-- end sidebar -->{/block:IfNotSidebarOnLeft}
             </div>
