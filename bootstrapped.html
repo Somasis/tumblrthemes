@@ -28,6 +28,7 @@
         <meta name="if:Display Search" content="1" />
         <meta name="if:Fluid" content="0" />
         <meta name="if:Show Navigation Bar" content="1" />
+        <meta name="if:Redux" content="0" />
         <meta name="if:Header Below Nav" content="1" />
         
         <meta name="if:Show Post Actions" content="1" />
@@ -82,6 +83,10 @@
                 padding-top: 30px !important;
             }
 
+            .navbar {
+                margin-bottom: 0px !important;
+            }
+
             .tag:before, .tag:after, .search_query:before, .search_query:after {
                 content: '"';
             }
@@ -111,6 +116,10 @@
                 margin-bottom:0px !important;
                 background-image: url({HeaderImage}) !important;
             }{/block:ShowHeaderImage}
+
+            {block:AskEnabled}.submit-button {
+                border-left: 0 !important;
+            }{/block:AskEnabled}
 
             .blog-avatar-circle {
                 border-radius: 5em !important;
@@ -155,7 +164,11 @@
                 font-size: 15px;
             }
 
-            a.fa-link:hover { text-decoration: none !important; }
+            .no-link-deco,a.fa-link:hover { text-decoration: none !important; }
+
+            .no-link-color {
+                color: inherit;
+            }
             
             .post-special-content {
                 display: block !important;
@@ -196,6 +209,10 @@
                 .flex-video {
                     padding-top: 0;
                 }
+            }
+
+            .header-title {
+                padding-top: 270px;
             }
 
             .panel-heading {
@@ -360,6 +377,12 @@
                 }
             }
 
+            .redux-blog-title {
+                padding-bottom: 4px;
+                margin-top: -10px;
+                border-bottom: 1px solid #CCC;
+            }
+
             {CustomCSS}
         </style>
         {text:Custom Head HTML}
@@ -398,7 +421,7 @@
                 </div>
             </div>
         </nav>{/block:IfShowNavigationBar}
-        {block:IfHeaderBelowNav}{block:ShowHeaderImage}<header class='blog-header'><div class="jumbotron blog-header-image"></div></header>{/block:ShowHeaderImage}{/block:IfHeaderBelowNav}
+        {block:IfHeaderBelowNav}{block:ShowHeaderImage}<header class='blog-header'><a title="{Title}" class='no-link-deco no-link-color' href='/'>{/block:IfRedux}<div class="jumbotron blog-header-image"></div></a></header>{/block:ShowHeaderImage}{/block:IfHeaderBelowNav}
         <div class="container{block:IfFluid}-fluid{/block:IfFluid} container-posts">
             <div class='row'>
                 {block:IfSidebarOnLeft}<!-- begin sidebar -->
@@ -406,10 +429,22 @@
                     <div class="blog-details panel panel-default">
                         <div class='panel-body'>
                             {block:ShowAvatar}<div class="blog-avatar center-block">
-                                <img class='img-responsive img-rounded blog-avatar-{AvatarShape} center-block' alt='{Title}{block:English} avatar{/block:English}' data-src="holder.js/128x128" src="{PortraitURL-128}">
+                                <a href='/'><img class='img-responsive img-rounded blog-avatar-{AvatarShape} center-block' alt='{Title}{block:English} avatar{/block:English}' data-src="holder.js/128x128" src="{PortraitURL-128}"></a>
                                 <br />
                             </div>{/block:ShowAvatar}
+                            {block:IfRedux}{block:ShowTitle}<div class='h2 redux-blog-title text-center'><a class='no-link-deco no-link-color' href='/'>{Title}</a></div>{/block:ShowTitle}{/block:IfRedux}
                             {block:ShowDescription}{block:Description}<p class='blog-description center-block'>{Description}</p>{/block:Description}{/block:ShowDescription}
+                            {block:IfRedux}
+                                <div class='btn-group btn-group-justified'>
+                                    {block:AskEnabled}<a class='btn btn-default btn-lg ask-button' href='/ask'><i class='fa fa-question-circle'></i> {AskLabel}</a>{/block:AskEnabled}
+                                    {block:SubmissionsEnabled}<a class='btn btn-default btn-lg submit-button' href='/submit'><i class='fa fa-pencil-square-o'></i> {SubmitLabel}</a>{/block:SubmissionsEnabled}
+                                </div>
+                                {block:HasPages}<br />
+                                    <div class='btn-group-vertical center-block'>
+                                        {block:Pages}<a class='btn btn-default btn-lg' href='{URL}'>{Label}</a>{/block:Pages}
+                                    </div><br />
+                                {/block:HasPages}
+                            {/block:IfRedux}
                             {block:IfShowFollowMe}<a class='btn btn-lg btn-block btn-primary follow-btn' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />{/block:IfShowFollowMe}
                             {block:IfShowArchiveAndRandom}<div class='btn-group btn-group-lg btn-group-justified'>
                                 <a href='/archive' class='btn btn-default' style='border-right: 0px;'><i class='fa fa-clock-o'></i> {lang:Archive}</a>
@@ -538,10 +573,22 @@
                     <div class="blog-details panel panel-default">
                         <div class='panel-body'>
                             {block:ShowAvatar}<div class="blog-avatar center-block">
-                                <img class='img-responsive img-rounded blog-avatar-{AvatarShape} center-block' alt='{Title}{block:English} avatar{/block:English}' data-src="holder.js/128x128" src="{PortraitURL-128}">
+                                <a href='/'><img class='img-responsive img-rounded blog-avatar-{AvatarShape} center-block' alt='{Title}{block:English} avatar{/block:English}' data-src="holder.js/128x128" src="{PortraitURL-128}"></a>
                                 <br />
                             </div>{/block:ShowAvatar}
+                            {block:IfRedux}{block:ShowTitle}<div class='h2 redux-blog-title text-center'><a class='no-link-deco no-link-color' href='/'>{Title}</a></div>{/block:ShowTitle}{/block:IfRedux}
                             {block:ShowDescription}{block:Description}<p class='blog-description center-block'>{Description}</p>{/block:Description}{/block:ShowDescription}
+                            {block:IfRedux}
+                                <div class='btn-group btn-group-justified'>
+                                    {block:AskEnabled}<a class='btn btn-default btn-lg ask-button' href='/ask'><i class='fa fa-question-circle'></i> {AskLabel}</a>{/block:AskEnabled}
+                                    {block:SubmissionsEnabled}<a class='btn btn-default btn-lg submit-button' href='/submit'><i class='fa fa-pencil-square-o'></i> {SubmitLabel}</a>{/block:SubmissionsEnabled}
+                                </div>
+                                {block:HasPages}<br />
+                                    <div class='btn-group-vertical center-block'>
+                                        {block:Pages}<a class='btn btn-default btn-lg' href='{URL}'>{Label}</a>{/block:Pages}
+                                    </div><br />
+                                {/block:HasPages}
+                            {/block:IfRedux}
                             {block:IfShowFollowMe}<a class='btn btn-lg btn-block btn-primary follow-btn' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />{/block:IfShowFollowMe}
                             {block:IfShowArchiveAndRandom}<div class='btn-group btn-group-lg btn-group-justified'>
                                 <a href='/archive' class='btn btn-default' style='border-right: 0px;'><i class='fa fa-clock-o'></i> {lang:Archive}</a>
