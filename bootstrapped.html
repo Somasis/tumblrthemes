@@ -195,7 +195,9 @@
             .notes {
                 padding-top: 12px;
                 padding-left: 0;
+                padding-right: 12px;
                 margin-bottom: 20px;
+                width: 100%;
             }
 
             .notes .note:first-child {
@@ -222,17 +224,17 @@
             .notes .note .avatar { margin-right: 12px; }
 
             .notes .note .action {
-                display: inline;
+                display: inline-block;
                 padding: .2em .6em .3em;
                 font-size: 75%;
                 font-weight: bold;
                 line-height: 1;
                 color: #fff;
                 text-align: center;
-                white-space: nowrap;
                 vertical-align: baseline;
                 border-radius: .25em;
-                background-color: {AccentColor} !important;
+                background-color: #5f486d !important;
+                max-width: 89%;
             }
 
             .notes .note .action a { color: #fff !important; }
@@ -319,6 +321,10 @@
                 width: 15px;
                 height: 15px;
             }
+            
+            .tumblr_audio_player {
+                width:97%;
+            }
 
             @media (max-width: 400px) {
                 #tumblr_controls {
@@ -357,7 +363,6 @@
                         {block:HasPages}{block:Pages}<li>
                             <a href='{URL}'>{Label}</a>
                         </li>{/block:Pages}{/block:HasPages}
-
                     </ul>
                     {block:IfDisplaySearch}<form class='navbar-form navbar-right' role='search' action='/search' method='get'>
                         <div class='input-group'>
@@ -546,5 +551,10 @@
             <script src="//cdn.jsdelivr.net/g/html5shiv,respond"></script>
         <![endif]-->
         <script src="//cdn.jsdelivr.net/g/jquery,bootstrap"></script>
+        <script>
+            $(document).ready(function() {
+                $('.tumblr_audio_player').attr('width','');
+            });
+        </script>
     </body>
 </html>
