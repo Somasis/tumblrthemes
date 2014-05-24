@@ -395,16 +395,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    {block:ShowTitle}<a class="navbar-brand blog-title" href="{BlogURL}">{Title}</a>{/block:ShowTitle}
+                    {block:ShowTitle}{block:IfNotRedux}<a class="navbar-brand blog-title" href="{BlogURL}">{Title}</a>{/block:IfNotRedux}{/block:ShowTitle}
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav" {block:HideTitle}style="margin-left: -14px"{/block:HideTitle}>
-                        {block:AskEnabled}<li>
+                    <ul class="nav navbar-nav" {block:IfRedux}{block:ShowTitle}style="margin-left: -14px"{/block:ShowTitle}{/block:IfRedux} {block:HideTitle}style="margin-left: -14px"{/block:HideTitle}>
+                        {block:IfNotRedux}{block:AskEnabled}<li>
                             <a href='/ask'><i class='fa fa-question-circle'></i> {AskLabel}</a>
                         </li>{/block:AskEnabled}
                         {block:SubmissionsEnabled}<li>
                             <a href='/submit'><i class='fa fa-pencil-square-o'></i> {SubmitLabel}</a>
-                        </li>{/block:SubmissionsEnabled}
+                        </li>{/block:SubmissionsEnabled}{/block:IfNotRedux}
                         {block:HasPages}{block:Pages}<li>
                             <a href='{URL}'>{Label}</a>
                         </li>{/block:Pages}{/block:HasPages}
@@ -435,12 +435,12 @@
                                 <div class='btn-group btn-group-justified'>
                                     {block:AskEnabled}<a class='btn btn-default btn-lg ask-button' href='/ask'><i class='fa fa-question-circle'></i> {AskLabel}</a>{/block:AskEnabled}
                                     {block:SubmissionsEnabled}<a class='btn btn-default btn-lg submit-button' href='/submit'><i class='fa fa-pencil-square-o'></i> {SubmitLabel}</a>{/block:SubmissionsEnabled}
-                                </div>
-                                {block:HasPages}<br />
+                                </div><br />
+                                {block:IfNotShowNavigationBar}{block:HasPages}
                                     <div class='btn-group-vertical center-block'>
                                         {block:Pages}<a class='btn btn-default btn-lg' href='{URL}'>{Label}</a>{/block:Pages}
                                     </div><br />
-                                {/block:HasPages}
+                                {/block:HasPages}{/block:IfNotShowNavigationBar}
                             {/block:IfRedux}
                             {block:IfShowFollowMe}<a class='btn btn-lg btn-block btn-primary follow-btn' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />{/block:IfShowFollowMe}
                             {block:IfShowArchiveAndRandom}<div class='btn-group btn-group-lg btn-group-justified'>
@@ -579,12 +579,12 @@
                                 <div class='btn-group btn-group-justified'>
                                     {block:AskEnabled}<a class='btn btn-default btn-lg ask-button' href='/ask'><i class='fa fa-question-circle'></i> {AskLabel}</a>{/block:AskEnabled}
                                     {block:SubmissionsEnabled}<a class='btn btn-default btn-lg submit-button' href='/submit'><i class='fa fa-pencil-square-o'></i> {SubmitLabel}</a>{/block:SubmissionsEnabled}
-                                </div>
-                                {block:HasPages}<br />
+                                </div><br />
+                                {block:IfNotShowNavigationBar}{block:HasPages}
                                     <div class='btn-group-vertical center-block'>
                                         {block:Pages}<a class='btn btn-default btn-lg' href='{URL}'>{Label}</a>{/block:Pages}
                                     </div><br />
-                                {/block:HasPages}
+                                {/block:HasPages}{/block:IfNotShowNavigationBar}
                             {/block:IfRedux}
                             {block:IfShowFollowMe}<a class='btn btn-lg btn-block btn-primary follow-btn' href='/follow/{URLEncodedName}'><i class="fa fa-lg fa-plus-square"></i> {lang:Follow me}</a><br />{/block:IfShowFollowMe}
                             {block:IfShowArchiveAndRandom}<div class='btn-group btn-group-lg btn-group-justified'>
