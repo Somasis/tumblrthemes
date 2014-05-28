@@ -6,6 +6,7 @@
         <meta name="color:Dark Accent Color" content="#427ea3">
         
         <meta name="text:Twitter Username" content="" />
+        <meta name="text:Vine Username" content="" />
         <meta name="text:Facebook Username" content="" />
         <meta name="text:SoundCloud Username" content="" />
         <meta name="text:Bandcamp URL" content="" />
@@ -14,6 +15,8 @@
         <meta name="text:Steam Profile Link" content="" />
         <meta name="text:LastFM Username" content="" />
         <meta name="text:YouTube Username" content="" />
+        <meta name="text:deviantArt Username" content="" />
+        <meta name="text:Behance Username" content="" />
         <meta name="text:Custom Head HTML" content="" />
         <meta name="text:Custom Sidebar Footer HTML" content="" />
         <meta name="text:Custom Sidebar HTML" content="" />
@@ -37,8 +40,9 @@
         <meta name="if:Show Following" content="0" />
         <meta name="if:Show Theme Credit" content="1" />
         <meta name="if:Show RSS Feed" content="1" />
-        <meta name="if:Show Twitter Link" content="0" />
         <meta name="if:Show Facebook Link" content="0" />
+        <meta name="if:Show Twitter Link" content="0" />
+        <meta name="if:Show Vine Link" content="0" />
         <meta name="if:Show SoundCloud Link" content="0" />
         <meta name="if:Show GitHub Link" content="0" />
         <meta name="if:Show Skype Username" content="0" />
@@ -46,6 +50,8 @@
         <meta name="if:Show LastFM Link" content="0" />
         <meta name="if:Show Bandcamp Link" content="0" />
         <meta name="if:Show YouTube Link" content="0" />
+        <meta name="if:Show deviantArt Link" content="0" />
+        <meta name="if:Show Behance Link" content="0" />
 
         <!-- meta name="if:Show Post Type" content="0" -->
         <!--    post type icon idea:
@@ -102,10 +108,14 @@
                 opacity: 0.95;
             }{/block:IfPanelsWithSlightTransparency}
 
-            .blog-title {
+            .blog-title, .blog-title:hover {
                 font-family: {TitleFont};
                 font-weight: {TitleFontWeight};
                 color: {TitleColor};
+            }
+            
+            .blog-title a:hover {
+                color: {AccentColor} !important;
             }
 
             {block:ShowHeaderImage}.blog-header-image {
@@ -409,12 +419,12 @@
                             <a href='{URL}'>{Label}</a>
                         </li>{/block:Pages}{/block:HasPages}
                     </ul>
-                    {block:IfDisplaySearch}<form class='navbar-form navbar-right' role='search' action='/search' method='get'>
+                    {block:IfNotRedux}{block:IfDisplaySearch}<form class='navbar-form navbar-right' role='search' action='/search' method='get'>
                         <div class='input-group'>
                             <span class='input-group-addon'><i class='fa fa-search'></i></span>
                             <input name='q' type='search' class='form-control' placeholder='Search' value='{SearchQuery}'>
                         </div>
-                    </form>{/block:IfDisplaySearch}
+                    </form>{/block:IfDisplaySearch}{/block:IfNotRedux}
                 </div>
             </div>
         </nav>{/block:IfShowNavigationBar}
@@ -432,6 +442,13 @@
                             {block:IfRedux}{block:ShowTitle}<div class='h2 blog-title redux-blog-title text-center'><a class='no-link-deco no-link-color' href='/'>{Title}</a></div>{/block:ShowTitle}{/block:IfRedux}
                             {block:ShowDescription}{block:Description}<p class='blog-description center-block'>{Description}</p>{/block:Description}{/block:ShowDescription}
                             {block:IfRedux}
+                                {block:IfDisplaySearch}<form role='search' action='/search' method='get'>
+                                    <div class='input-group'>
+                                        <span class='input-group-addon'><i class='fa fa-search'></i></span>
+                                        <input name='q' type='search' class='form-control' placeholder='Search' value='{SearchQuery}'>
+                                    </div>
+                                </form>{/block:IfDisplaySearch}
+                                <br />
                                 <div class='btn-group btn-group-justified'>
                                     {block:AskEnabled}<a class='btn btn-default btn-lg ask-button' href='/ask'><i class='fa fa-question-circle'></i> {AskLabel}</a>{/block:AskEnabled}
                                     {block:SubmissionsEnabled}<a class='btn btn-default btn-lg submit-button' href='/submit'><i class='fa fa-pencil-square-o'></i> {SubmitLabel}</a>{/block:SubmissionsEnabled}
@@ -451,12 +468,14 @@
                         </div>
                         <div class='panel-footer'>
                             {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>{/block:IfShowRSSFeed}
-                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
                             {block:IfShowFacebookLink}<a class='accent-link' href='//facebook.com/{text:Facebook Username}' alt='Facebook - {text:Facebook Username}'><i class='fa fa-facebook-square fa-lg'></i></a>{/block:IfShowFacebookLink}
-                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa-lg icon-soundcloud'></i></a>{/block:IfShowSoundCloudLink}
+                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
+                            {block:IfShowVineLink}<a class='accent-link' href='//vine.co/{text:Vine Username}' alt='Vine - {text:Vine Username}'><i class='fa fa-vine fa-lg'></i></a>{/block:IfShowVinelink}
+                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa fa-soundcloud fa-lg'></i></a>{/block:IfShowSoundCloudLink}
                             {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-github-alt fa-lg'></i></a>{/block:IfShowGitHubLink}
+                            {block:IfShowBehanceLink}<a class='accent-link' href='//behance.net/{text:Behance Username}' alt='Behance - {text:Behance Username}'><i class='fa fa-behance fa-lg'></i></a>{/block:IfShowBehancelink}
                             {block:IfShowSkypeUsername}<a class='accent-link' href='skype:{text:Skype Username}' alt='Skype - {text:Skype Username}'><i class='fa fa-skype fa-lg'></i></a>{/block:IfShowSkypeUsername}
-                            {block:IfShowSteamLink}<a class='accent-link' href='{text:Steam Profile Link}' alt='Steam'><i class='fa fa-gamepad fa-lg'></i></a>{/block:IfShowSteamlink}
+                            {block:IfShowSteamLink}<a class='accent-link' href='{text:Steam Profile Link}' alt='Steam'><i class='fa fa-steam fa-lg'></i></a>{/block:IfShowSteamlink}
                             {block:IfShowLastFmLink}<a class='accent-link' href='//last.fm/user/{text:LastFM Username}' alt='LastFM - {text:LastFM Username}'><i class='fa-lg icon-lastfm'></i></a>{/block:IfShowLastFmLink}
                             {block:IfShowBandcampLink}<a class='accent-link' href='{text:Bandcamp URL}' alt='Bandcamp'><i class='fa fa-music'></i></a>{/block:IfShowBandcampLink}
                             {block:IfShowYouTubeLink}<a class='accent-link' href='//youtube.com/user/{text:YouTube Username}' alt='YouTube - {text:YouTube Username}'><i class='fa fa-youtube-play'></i></a>{/block:IfShowYouTubeLink}
@@ -576,6 +595,13 @@
                             {block:IfRedux}{block:ShowTitle}<div class='h2 blog-title redux-blog-title text-center'><a class='no-link-deco no-link-color' href='/'>{Title}</a></div>{/block:ShowTitle}{/block:IfRedux}
                             {block:ShowDescription}{block:Description}<p class='blog-description center-block'>{Description}</p>{/block:Description}{/block:ShowDescription}
                             {block:IfRedux}
+                                {block:IfDisplaySearch}<form role='search' action='/search' method='get'>
+                                    <div class='input-group'>
+                                        <span class='input-group-addon'><i class='fa fa-search'></i></span>
+                                        <input name='q' type='search' class='form-control' placeholder='Search' value='{SearchQuery}'>
+                                    </div>
+                                </form>{/block:IfDisplaySearch}
+                                <br />
                                 <div class='btn-group btn-group-justified'>
                                     {block:AskEnabled}<a class='btn btn-default btn-lg ask-button' href='/ask'><i class='fa fa-question-circle'></i> {AskLabel}</a>{/block:AskEnabled}
                                     {block:SubmissionsEnabled}<a class='btn btn-default btn-lg submit-button' href='/submit'><i class='fa fa-pencil-square-o'></i> {SubmitLabel}</a>{/block:SubmissionsEnabled}
@@ -595,12 +621,14 @@
                         </div>
                         <div class='panel-footer'>
                             {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>{/block:IfShowRSSFeed}
-                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
                             {block:IfShowFacebookLink}<a class='accent-link' href='//facebook.com/{text:Facebook Username}' alt='Facebook - {text:Facebook Username}'><i class='fa fa-facebook-square fa-lg'></i></a>{/block:IfShowFacebookLink}
-                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa-lg icon-soundcloud'></i></a>{/block:IfShowSoundCloudLink}
+                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
+                            {block:IfShowVineLink}<a class='accent-link' href='//vine.co/{text:Vine Username}' alt='Vine - {text:Vine Username}'><i class='fa fa-vine fa-lg'></i></a>{/block:IfShowVinelink}
+                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa fa-soundcloud fa-lg'></i></a>{/block:IfShowSoundCloudLink}
                             {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-github-alt fa-lg'></i></a>{/block:IfShowGitHubLink}
+                            {block:IfShowBehanceLink}<a class='accent-link' href='//behance.net/{text:Behance Username}' alt='Behance - {text:Behance Username}'><i class='fa fa-behance fa-lg'></i></a>{/block:IfShowBehancelink}
                             {block:IfShowSkypeUsername}<a class='accent-link' href='skype:{text:Skype Username}' alt='Skype - {text:Skype Username}'><i class='fa fa-skype fa-lg'></i></a>{/block:IfShowSkypeUsername}
-                            {block:IfShowSteamLink}<a class='accent-link' href='{text:Steam Profile Link}' alt='Steam'><i class='fa fa-gamepad fa-lg'></i></a>{/block:IfShowSteamlink}
+                            {block:IfShowSteamLink}<a class='accent-link' href='{text:Steam Profile Link}' alt='Steam'><i class='fa fa-steam fa-lg'></i></a>{/block:IfShowSteamlink}
                             {block:IfShowLastFmLink}<a class='accent-link' href='//last.fm/user/{text:LastFM Username}' alt='LastFM - {text:LastFM Username}'><i class='fa-lg icon-lastfm'></i></a>{/block:IfShowLastFmLink}
                             {block:IfShowBandcampLink}<a class='accent-link' href='{text:Bandcamp URL}' alt='Bandcamp'><i class='fa fa-music'></i></a>{/block:IfShowBandcampLink}
                             {block:IfShowYouTubeLink}<a class='accent-link' href='//youtube.com/user/{text:YouTube Username}' alt='YouTube - {text:YouTube Username}'><i class='fa fa-youtube-play'></i></a>{/block:IfShowYouTubeLink}
