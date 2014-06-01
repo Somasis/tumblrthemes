@@ -4,6 +4,7 @@
     <head>
         <meta name="image:Background" content="" />
         <meta name="color:Dark Accent Color" content="#427ea3">
+        <meta name="text:Roundedness" content="4px" />
         
         <meta name="text:Twitter Username" content="" />
         <meta name="text:Vine Username" content="" />
@@ -52,20 +53,6 @@
         <meta name="if:Show YouTube Link" content="0" />
         <meta name="if:Show deviantArt Link" content="0" />
         <meta name="if:Show Behance Link" content="0" />
-
-        <!-- meta name="if:Show Post Type" content="0" -->
-        <!--    post type icon idea:
-                    fa-font - text
-                    fa-picture-o - photo/photoset
-                    fa-quote-left - quote
-                    fa-globe - link
-                    fa-comment - chat
-                    glyphicon-headphones - audio
-                    (better than fontawesome's headphones if you ask me)
-                    fa-video-camera - video
-                    {block:Text}<i class='fa-font' alt='{lang:Text post}'></i>{/block:Text}
-                    etc.
-        -->
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -390,6 +377,22 @@
                 border-bottom: 1px solid #CCC;
             }
 
+            .btn-lg, .btn-group-lg > .btn , .form-control, .panel, .btn, .input-group-addon {
+                border-radius: {text:Roundedness};
+            }
+
+            .btn-group-vertical > .btn:first-child:not(:last-child) {
+                border-top-right-radius: {text:Roundedness} !important;
+            }
+
+            .btn-group-vertical > .btn:last-child:not(:first-child) {
+                border-bottom-left-radius: {text:Roundedness} !important;
+            }
+
+            .pagination_button a {
+                border-radius: {text:Roundedness} !important;
+            }
+
             {CustomCSS}
         </style>
         {text:Custom Head HTML}
@@ -436,7 +439,7 @@
                     <div class="blog-details panel panel-default">
                         <div class='panel-body'>
                             {block:ShowAvatar}<div class="blog-avatar center-block">
-                                <a href='/'><img class='img-responsive img-rounded blog-avatar-{AvatarShape} center-block' alt='{Title}{block:English} avatar{/block:English}' data-src="holder.js/128x128" src="{PortraitURL-128}"></a>
+                                <a href='/'><img class='img-responsive img-rounded blog-avatar-{AvatarShape} center-block' alt='{Title}{block:English} avatar{/block:English}' data-src="holder.js/128x128" src="{PortraitURL-128}" /></a>
                                 <br />
                             </div>{/block:ShowAvatar}
                             {block:IfRedux}{block:ShowTitle}<div class='h2 blog-title redux-blog-title text-center'><a class='no-link-deco no-link-color' href='/'>{Title}</a></div>{/block:ShowTitle}{/block:IfRedux}
@@ -483,7 +486,7 @@
                         </div>
                     </div>
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
-                        {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}'></a>{/block:Followed}
+                        {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}' /></a>{/block:Followed}
                     </div>{/block:Following}{/block:IfShowFollowing}
                     {block:IfShowThemeCredit}<p class='text-right small credit'>
                         <a class='accent-link' href='//www.tumblr.com/theme/38735'><strong>{block:English}This tumblr is Bootstrapped{/block:English}{block:NotEnglish}{lang:Install this theme}{/block:NotEnglish}</strong>.</a>
@@ -492,7 +495,8 @@
                 <!-- end sidebar -->{/block:IfSidebarOnLeft}
                 <div class='col-lg-8'>
                     {block:TagPage}<h2 style='color: {AccentColor}; margin-top: 0px;'>{lang:Showing posts tagged Tag 2} <a class='small fa fa-link' href='/tagged/{URLSafeTag}'></a></h2>{/block:TagPage}
-                    {block:SearchPage}<h2 style='color: {AccentColor}; margin-top: 0px;'>{lang:Showing SearchResultCount results for SearchQuery 2} <a class='small fa fa-link' href='/search?q={URLSafeSearchQuery}'></a></h2>{/block:SearchPage}
+                    {block:SearchPage}<h2 style='color: {AccentColor}; margin-top: 0px;{block:NoSearchResults}display:none;{/block:NoSearchResults}'>{lang:Showing SearchResultCount results for SearchQuery 2} <a class='small fa fa-link' href='/search?q={URLSafeSearchQuery}'></a></h2>
+                    {block:NoSearchResults}<h2 style='color: {AccentColor}; margin-top: 0px'>{lang:No results for SearchQuery 2} <a class='small fa fa-link' href='/search?q={URLSafeSearchQuery}'></a></h2>{/block:NoSearchResults}{/block:SearchPage}
                     <div class='posts'>
                         {block:Posts}<div class='post'><div class="panel panel-default">
                             {block:Title}<div class="panel-heading">
@@ -510,7 +514,7 @@
                             {block:Link}<div class="panel-body">
                                 <div class='row'>
                                     {block:Thumbnail}<div class='link-photo-container center-block col-lg-3'><a href='{URL}'>
-                                        <img class='link-photo img-thumbnail' src='{Thumbnail}'>
+                                        <img class='link-photo img-thumbnail' src='{Thumbnail}' />
                                     </a></div>{/block:Thumbnail}
                                     <div class='link-btn-container col-lg-12 {block:Thumbnail}col-lg-9{/block:Thumbnail}'>
                                         <a href='{URL}' {Target} class='btn btn-primary btn-block btn-lg link-btn' style='color: #ffffff !important;white-space:normal'>{Name}</a><br />
@@ -522,7 +526,7 @@
                             {block:Answer}<div class="panel-body">
                                 <span class='ask'>
                                     <div class="media">
-                                        <img class="avatar pull-left media-object" src="{AskerPortraitURL-48}">
+                                        <img class="avatar pull-left media-object" src="{AskerPortraitURL-48}" />
                                         <div class='media-body'>
                                             <div class="well">
                                                 <h4 class='media-heading'>{lang:Asker asked 2}</h4>
@@ -531,10 +535,10 @@
                                         </div>
                                     </div>
                                     <div class='media'>
-                                        <img class="avatar pull-right media-object" src="{block:Answerer}{AnswererPortraitURL-48}{/block:Answerer}{block:NotReblog}{PostAuthorPortraitURL-48}{/block:NotReblog}">
+                                        <img class="avatar pull-right media-object" src="{block:Answerer}{AnswererPortraitURL-48}{/block:Answerer}{block:NotReblog}{PostAuthorPortraitURL-48}{/block:NotReblog}" />
                                         <div class='media-body'>
                                             <div class="well">
-                                                <h4 class='media-heading'><a href='{PostAuthorURL}'>{Answerer}{block:NotReblog}{PostAuthorName}{/block:NotReblog}</a> answered</h4>
+                                                <h4 class='media-heading'><a href='{PostAuthorURL}'>{Answerer}{block:NotReblog}{PostAuthorName}{/block:NotReblog}</a> {block:English}answered{/block:English}</h4>
                                                 {Answer}
                                             </div>
                                         </div>
@@ -545,9 +549,9 @@
                             {block:Video}<div class='post-special-content flex-video'>{VideoEmbed-500}</div>{/block:Video}
                             {block:Audio}<div class='post-special-content center-block'>{block:AudioEmbed}{AudioEmbed color="white"}{/block:AudioEmbed}</div>{/block:Audio}
                             {block:Quote}<div class='panel-body'><blockquote class='quote quote-{Length}'>{Quote}{block:Source}<footer>{Source}</footer>{/block:Source}</blockquote></div>{/block:Quote}
-                            {block:Photo}{LinkOpenTag}<img class='img-responsive center-block' src="{PhotoURL-HighRes}" alt="{PhotoAlt}" width="{PhotoWidth-HighRes}" height="{PhotoHeight-HighRes}">{LinkCloseTag}{/block:Photo}
+                            {block:Photo}{LinkOpenTag}<img class='img-responsive center-block' src="{PhotoURL-HighRes}" alt="{PhotoAlt}" width="{PhotoWidth-HighRes}" height="{PhotoHeight-HighRes}" />{LinkCloseTag}{/block:Photo}
                             {block:Photoset}<div class='post-special-content center-block'>{Photoset}</div>{/block:Photoset}
-                            {block:Panorama}<div class='post-special-content post-panorama center-block'>{LinkOpenTag}<img class='img-responsive center-block panorama' src="{PhotoURL-Panorama}" alt="{PhotoAlt}">{LinkCloseTag}</div>{/block:Panorama}
+                            {block:Panorama}<div class='post-special-content post-panorama center-block'>{LinkOpenTag}<img class='img-responsive center-block panorama' src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}</div>{/block:Panorama}
                             {block:Body}<div class="panel-body post-content">{Body}</div>{/block:Body}
                             {block:Caption}<div class="panel-body">{Caption}</div>{/block:Caption}
                             <div class="panel-footer clearfix">
@@ -561,24 +565,24 @@
                     </div>
                     {block:PermalinkPagination}<ul class="pager">
                         {block:PreviousPost}
-                            <li class="previous">
+                            <li class="previous pagination_button">
                                 <a href="{PreviousPost}"><i class='fa fa-chevron-left'></i>&nbsp;&nbsp;{lang:Previous post}</a>
                             </li>
                         {/block:PreviousPost}
                         {block:NextPost}
-                            <li class="next">
+                            <li class="next pagination_button">
                                 <a href="{NextPost}">{lang:Next post}&nbsp;&nbsp;<i class='fa fa-chevron-right'></i></a>
                             </li>
                         {/block:NextPost}
                     </ul>{/block:PermalinkPagination}
                     {block:Pagination}<ul class="pager">
                         {block:PreviousPage}
-                            <li class="previous">
+                            <li class="previous pagination_button">
                                 <a href="{PreviousPage}"><i class='fa fa-chevron-left'></i>&nbsp;&nbsp;{lang:Previous}</a>
                             </li>
                         {/block:PreviousPage}
                         {block:NextPage}
-                            <li class="next">
+                            <li class="next pagination_button">
                                 <a href="{NextPage}">{lang:Next}&nbsp;&nbsp;<i class='fa fa-chevron-right'></i></a>
                             </li>
                         {/block:NextPage}
@@ -589,7 +593,7 @@
                     <div class="blog-details panel panel-default">
                         <div class='panel-body'>
                             {block:ShowAvatar}<div class="blog-avatar center-block">
-                                <a href='/'><img class='img-responsive img-rounded blog-avatar-{AvatarShape} center-block' alt='{Title}{block:English} avatar{/block:English}' data-src="holder.js/128x128" src="{PortraitURL-128}"></a>
+                                <a href='/'><img class='img-responsive img-rounded blog-avatar-{AvatarShape} center-block' alt='{Title}{block:English} avatar{/block:English}' data-src="holder.js/128x128" src="{PortraitURL-128}" /></a>
                                 <br />
                             </div>{/block:ShowAvatar}
                             {block:IfRedux}{block:ShowTitle}<div class='h2 blog-title redux-blog-title text-center'><a class='no-link-deco no-link-color' href='/'>{Title}</a></div>{/block:ShowTitle}{/block:IfRedux}
@@ -636,7 +640,7 @@
                         </div>
                     </div>
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
-                        {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}'></a>{/block:Followed}
+                        {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}' /></a>{/block:Followed}
                     </div>{/block:Following}{/block:IfShowFollowing}
                     {block:IfShowThemeCredit}<p class='text-right small credit'>
                         <a class='accent-link' href='//www.tumblr.com/theme/38735'><strong>{block:English}This tumblr is Bootstrapped{/block:English}{block:NotEnglish}{lang:Install this theme}{/block:NotEnglish}</strong>.</a>
