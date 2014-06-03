@@ -488,12 +488,16 @@
                             {text:Custom Sidebar Footer HTML}
                         </div>
                     </div>
+                    {block:IfShowGroupMembers}{block:GroupMembers}<div class='group-members panel panel-default'>
+                        {block:GroupMember}<a class='group-member' href='{GroupMemberURL}' title='{GroupMemberName} - {GroupMemberTitle}'><img class='group-member-avatar' src='{GroupMemberPortraitURL-128}' /></a>{/block:GroupMember}
+                    </div>{/block:GroupMembers}{/block:IfShowGroupMembers}
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
                         {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}' /></a>{/block:Followed}
                     </div>{/block:Following}{/block:IfShowFollowing}
                     {block:IfShowThemeCredit}<p class='text-right small credit'>
                         <a class='accent-link' href='//www.tumblr.com/theme/38735'><strong>{block:English}This tumblr is Bootstrapped{/block:English}{block:NotEnglish}{lang:Install this theme}{/block:NotEnglish}</strong>.</a>
                     </p>{/block:IfShowThemeCredit}
+                    {block:IfShowCopyright}<p class='accent-link text-right small copyright'>&copy; {CopyrightYears}</p>{/block:IfShowCopyright}
                 </div>
                 <!-- end sidebar -->{/block:IfSidebarOnLeft}
                 <div class='col-lg-8'>
