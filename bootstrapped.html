@@ -22,6 +22,9 @@
         <meta name="text:Custom Sidebar Footer HTML" content="" />
         <meta name="text:Custom Sidebar HTML" content="" />
         
+        <meta name="if:Use Relative Time" content="1" />
+        <meta name="if:Show Group Members" content="0" />
+        <meta name="if:Show Copyright" content="1" />
         <meta name="if:Use Bold Titles" content="0" />
         <meta name="if:Sidebar on Left" content="0" />
         <meta name="if:Repeat Background Horizontally" content="1" />
@@ -84,9 +87,9 @@
                 content: '"';
             }
 
-            .following { overflow: hidden; } /* image corners don't get cut off if we don't do this */
+            .group-members, .following { overflow: hidden; } /* image corners don't get cut off if we don't do this */
 
-            .followed-avatar {
+            .group-member-avatar, .followed-avatar {
                 width: 10%;
                 display: inline-block;
             }
@@ -138,7 +141,7 @@
                 vertical-align: middle;
             }
 
-            .accent-link:hover, .accent-link:active, .accent-link:focus, .post a:hover, .post a:active, .post a:focus, .pager a:hover, .pager a:active, .pager a:focus, a.fa-link:hover, a.fa-link:focus, a.fa-link:active {
+            a.accent-link:hover, a.accent-link:active, a.accent-link:focus, .post a:hover, .post a:active, .post a:focus, .pager a:hover, .pager a:active, .pager a:focus, a.fa-link:hover, a.fa-link:focus, a.fa-link:active {
                 color: {color:Dark Accent Color} !important;
             }
 
@@ -377,7 +380,7 @@
                 border-bottom: 1px solid #CCC;
             }
 
-            .btn-lg, .btn-group-lg > .btn , .form-control, .panel, .btn, .input-group-addon {
+            .img-thumbnail, .btn-lg, .btn-group-lg > .btn , .form-control, .panel, .btn, .input-group-addon {
                 border-radius: {text:Roundedness};
             }
 
@@ -556,7 +559,7 @@
                             {block:Caption}<div class="panel-body">{Caption}</div>{/block:Caption}
                             <div class="panel-footer clearfix">
                                 <div class='pull-left'>{block:RebloggedFrom}<span class='post-reblogged-from'><a href='{ReblogParentURL}' title='{lang:Reblogged from ReblogParentName}' <i class='fa fa-retweet'></i></a></span>{/block:RebloggedFrom}{block:ContentSource}<span class='dot'></span><span class='post-source'><a title='{lang:Originally from ReblogRootName}' href='{SourceURL}'><i class='fa fa-external-link-square'></i></a></span>{/block:ContentSource}{block:HasTags}<span class='post-tags {block:ContentSource}separator-before{/block:ContentSource} {block:RebloggedFrom}separator-before{/block:RebloggedFrom}'><i class='fa fa-tags'></i>&nbsp;{block:Tags}<span class='post-tag'><a href='{TagURL}' class='post-tag'>{Tag}</a></span>{/block:Tags}</span>{/block:HasTags}</div>
-                                <span class='pull-right'>{block:Date}<span class='post-timestamp' title='{lang:Posted at FormattedTime}'>{TimeAgo}</span>{/block:Date}{block:PlayCount}<span class='post-play-count'>{block:ExternalAudio}<a href='{ExternalAudioURL}'>{/block:ExternalAudio}<span class='badge'>{PlayCountWithLabel}</span>{block:ExternalAudio}</a>{/block:ExternalAudio}</span>{/block:PlayCount}{block:NoteCount}<span class='post-notes'><a href='{Permalink}#notes'><span class="badge">{NoteCountWithLabel}</span></a></span>{/block:NoteCount}<span class='post-permalink'><a {block:Title}title='{Title}'{/block:Title} href='{Permalink}'><i class='fa fa-link'></i></a></span>{block:IfShowPostActions}{block:Date}<span class='dot'></span>{LikeButton}<span class='dot'></span>{ReblogButton}{/block:Date}{/block:IfShowPostActions}</span>
+                                <span class='pull-right'>{block:Date}<span class='post-timestamp' title='{block:IfUseRelativeTime}{lang:Posted at FormattedTime}{/block:IfUseRelativeTime}{block:IfNotUseRelativeTime}{TimeAgo}{/block:IfNotUseRelativeTime}'>{block:IfUseRelativeTime}{TimeAgo}{/block:IfUseRelativeTime}{block:IfNotUseRelativeTime}{lang:Posted on Month DayOfMonth Year}{block:IfNotUseRelativeTime}</span>{/block:Date}{block:PlayCount}<span class='post-play-count'>{block:ExternalAudio}<a href='{ExternalAudioURL}'>{/block:ExternalAudio}<span class='badge'>{PlayCountWithLabel}</span>{block:ExternalAudio}</a>{/block:ExternalAudio}</span>{/block:PlayCount}{block:NoteCount}<span class='post-notes'><a href='{Permalink}#notes'><span class="badge">{NoteCountWithLabel}</span></a></span>{/block:NoteCount}<span class='post-permalink'><a {block:Title}title='{Title}'{/block:Title} href='{Permalink}'><i class='fa fa-link'></i></a></span>{block:IfShowPostActions}{block:Date}<span class='dot'></span>{LikeButton}<span class='dot'></span>{ReblogButton}{/block:Date}{/block:IfShowPostActions}</span>
                             </div>
                         </div>
                         {block:PostNotes}<div id='notes'>
@@ -639,12 +642,16 @@
                             {text:Custom Sidebar Footer HTML}
                         </div>
                     </div>
+                    {block:IfShowGroupMembers}{block:GroupMembers}<div class='group-members panel panel-default'>
+                        {block:GroupMember}<a class='group-member' href='{GroupMemberURL}' title='{GroupMemberName} - {GroupMemberTitle}'><img class='group-member-avatar' src='{GroupMemberPortraitURL-128}' /></a>{/block:GroupMember}
+                    </div>{/block:GroupMembers}{/block:IfShowGroupMembers}
                     {block:IfShowFollowing}{block:Following}<div class='following panel panel-default'>
                         {block:Followed}<a class='followed' href='{FollowedURL}' title='{FollowedName} - {FollowedTitle}'><img class='followed-avatar' src='{FollowedPortraitURL-128}' /></a>{/block:Followed}
                     </div>{/block:Following}{/block:IfShowFollowing}
                     {block:IfShowThemeCredit}<p class='text-right small credit'>
                         <a class='accent-link' href='//www.tumblr.com/theme/38735'><strong>{block:English}This tumblr is Bootstrapped{/block:English}{block:NotEnglish}{lang:Install this theme}{/block:NotEnglish}</strong>.</a>
                     </p>{/block:IfShowThemeCredit}
+                    {block:IfShowCopyright}<p class='accent-link text-right small copyright'>&copy; {CopyrightYears}</p>{/block:IfShowCopyright}
                 </div>
                 <!-- end sidebar -->{/block:IfNotSidebarOnLeft}
             </div>
