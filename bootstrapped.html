@@ -5,7 +5,7 @@
         <meta name="image:Background" content="" />
         <meta name="color:Dark Accent Color" content="#427ea3">
         <meta name="text:Roundedness" content="4px" />
-        
+
         <meta name="text:Twitter Username" content="" />
         <meta name="text:Vine Username" content="" />
         <meta name="text:Facebook Username" content="" />
@@ -21,7 +21,7 @@
         <meta name="text:Custom Head HTML" content="" />
         <meta name="text:Custom Sidebar Footer HTML" content="" />
         <meta name="text:Custom Sidebar HTML" content="" />
-        
+
         <meta name="if:Use Relative Time" content="1" />
         <meta name="if:Show Group Members" content="0" />
         <meta name="if:Show Copyright" content="1" />
@@ -37,7 +37,7 @@
         <meta name="if:Show Navigation Bar" content="1" />
         <meta name="if:Redux" content="0" />
         <meta name="if:Header Below Nav" content="1" />
-        
+
         <meta name="if:Show Post Actions" content="1" />
         <meta name="if:Show Follow Me" content="1" />
         <meta name="if:Show Archive and Random" content="1" />
@@ -103,7 +103,7 @@
                 font-weight: {TitleFontWeight};
                 color: {TitleColor};
             }
-            
+
             .blog-title a:hover {
                 color: {AccentColor} !important;
             }
@@ -170,7 +170,7 @@
             .no-link-color {
                 color: inherit;
             }
-            
+
             .post-special-content {
                 display: block !important;
                 margin-left: auto !important;
@@ -221,7 +221,7 @@
                 padding-top: 16px;
                 word-wrap: break-word;
              }
-             
+
             .panel-footer {
                 word-break: break-all;
             }
@@ -344,22 +344,22 @@
                 position: relative;
                 top: 2px;
             }
-            
+
             .like_button {
                 margin-left: 4px;
                 margin-right: 5px;
             }
-            
+
             .like_button iframe {
                 width: 15px;
                 height: 15px;
             }
-            
+
             .reblog_button svg {
                 width: 15px;
                 height: 15px;
             }
-            
+
             .tumblr_audio_player {
                 width:97%;
             }
@@ -562,7 +562,7 @@
                             {block:Body}<div class="panel-body post-content">{Body}</div>{/block:Body}
                             {block:Caption}<div class="panel-body">{Caption}</div>{/block:Caption}
                             <div class="panel-footer clearfix">
-                                <div class='pull-left'>{block:RebloggedFrom}<span class='post-reblogged-from'><a href='{ReblogParentURL}' title='{lang:Reblogged from ReblogParentName}' <i class='fa fa-retweet'></i></a></span>{/block:RebloggedFrom}{block:ContentSource}<span class='dot'></span><span class='post-source'><a title='{lang:Originally from ReblogRootName}' href='{SourceURL}'><i class='fa fa-external-link-square'></i></a></span>{/block:ContentSource}{block:HasTags}<span class='post-tags {block:ContentSource}separator-before{/block:ContentSource} {block:RebloggedFrom}separator-before{/block:RebloggedFrom}'><i class='fa fa-tags'></i>&nbsp;{block:Tags}<span class='post-tag'><a href='{TagURL}' class='post-tag'>{Tag}</a></span>{/block:Tags}</span>{/block:HasTags}</div>
+                                <div class='pull-left'>{block:RebloggedFrom}<span class='post-reblogged-from'><a href='{ReblogParentURL}' title='{lang:Reblogged from ReblogParentName}' <i class='fa fa-retweet'></i></a></span>{/block:RebloggedFrom}{block:ContentSource}{block:RebloggedFrom}<span class='dot'></span>{/block:RebloggedFrom}<span class='post-source'><a title='{lang:Originally from ReblogRootName}' href='{SourceURL}'><i class='fa fa-external-link-square'></i></a></span>{/block:ContentSource}{block:HasTags}<span class='post-tags {block:ContentSource}separator-before{/block:ContentSource} {block:RebloggedFrom}separator-before{/block:RebloggedFrom}'><i class='fa fa-tags'></i>&nbsp;{block:Tags}<span class='post-tag'><a href='{TagURL}' class='post-tag'>{Tag}</a></span>{/block:Tags}</span>{/block:HasTags}</div>
                                 <span class='pull-right'>{block:Date}<span class='post-timestamp' title='{block:IfUseRelativeTime}{lang:Posted at FormattedTime}{/block:IfUseRelativeTime}{block:IfNotUseRelativeTime}{TimeAgo}{/block:IfNotUseRelativeTime}'>{block:IfUseRelativeTime}{TimeAgo}{/block:IfUseRelativeTime}{block:IfNotUseRelativeTime}{lang:Posted on Month DayOfMonth Year}{block:IfNotUseRelativeTime}</span>{/block:Date}{block:PlayCount}<span class='post-play-count'>{block:ExternalAudio}<a href='{ExternalAudioURL}'>{/block:ExternalAudio}<span class='badge'>{PlayCountWithLabel}</span>{block:ExternalAudio}</a>{/block:ExternalAudio}</span>{/block:PlayCount}{block:NoteCount}<span class='post-notes'><a href='{Permalink}#notes'><span class="badge">{NoteCountWithLabel}</span></a></span>{/block:NoteCount}<span class='post-permalink'><a {block:Title}title='{Title}'{/block:Title} href='{Permalink}'><i class='fa fa-link'></i></a></span>{block:IfShowPostActions}{block:Date}<span class='dot'></span>{LikeButton}<span class='dot'></span>{ReblogButton}{/block:Date}{/block:IfShowPostActions}</span>
                             </div>
                         </div>
