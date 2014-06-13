@@ -396,6 +396,12 @@
                 border-radius: {text:Roundedness} !important;
             }
 
+            @media (min-width: 768px) {
+                .navbar-form.navbar-right:last-child {
+                    width: 20%;
+                }
+            }
+
             {CustomCSS}
         </style>
         {text:Custom Head HTML}
@@ -414,7 +420,7 @@
                     {block:ShowTitle}{block:IfNotRedux}<a class="navbar-brand blog-title" href="{BlogURL}">{Title}</a>{/block:IfNotRedux}{/block:ShowTitle}
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav" {block:IfRedux}{block:ShowTitle}style="margin-left: -14px"{/block:ShowTitle}{/block:IfRedux} {block:HideTitle}style="margin-left: -14px"{/block:HideTitle}>
+                    <ul class="nav navbar-nav menu" {block:IfRedux}{block:ShowTitle}style="margin-left: -14px"{/block:ShowTitle}{/block:IfRedux} {block:HideTitle}style="margin-left: -14px"{/block:HideTitle}>
                         {block:IfNotRedux}{block:AskEnabled}<li>
                             <a href='/ask'><i class='fa fa-question-circle'></i> {AskLabel}</a>
                         </li>{/block:AskEnabled}
@@ -590,7 +596,7 @@
                         {/block:PreviousPage}
                         {block:NextPage}
                             <li class="next pagination_button">
-                                <a href="{NextPage}">{lang:Next}&nbsp;&nbsp;<i class='fa fa-chevron-right'></i></a>
+                                <a href="{NextPage}">{lang:Next}&nbsp;&nbsp;<i class='fa fa-chevron-right'></i></a>ipt
                             </li>
                         {/block:NextPage}
                     </ul>{/block:Pagination}
@@ -664,9 +670,15 @@
             <script src="//cdn.jsdelivr.net/g/html5shiv,respond"></script>
         <![endif]-->
         <script src="//cdn.jsdelivr.net/g/jquery,bootstrap"></script>
+        <script src="//static.tumblr.com/s6e9dpg/Mizn7316i/bootstrap-overflow-navs.js"></script>
         <script>
             $(document).ready(function() {
                 $('.tumblr_audio_player').attr('width','');
+            });
+            $(".menu").overflowNavs({
+                "more" : "{lang:Pages}",
+                "parent" : ".nav-collapse",
+                "override_width" : true
             });
         </script>
     </body>
