@@ -26,18 +26,19 @@
         <meta name="if:Show Group Members" content="0" />
         <meta name="if:Show Copyright" content="1" />
         <meta name="if:Use Bold Titles" content="0" />
+        <meta name="if:Use menu for pages" content="1" />
         <meta name="if:Sidebar on Left" content="0" />
         <meta name="if:Repeat Background Horizontally" content="1" />
         <meta name="if:Repeat Background Vertically" content="1" />
         <meta name="if:Align Navbar Toggle to Left" content="1" />
         <meta name="if:Inverse Navbar Color" content="0" />
         <meta name="if:Panels with slight transparency" content="1" />
-        <meta name="if:Display Search" content="1" />
         <meta name="if:Fluid" content="0" />
-        <meta name="if:Show Navigation Bar" content="1" />
         <meta name="if:Redux" content="0" />
         <meta name="if:Header Below Nav" content="1" />
 
+        <meta name="if:Display Search" content="1" />
+        <meta name="if:Show Navigation Bar" content="1" />
         <meta name="if:Show Post Actions" content="1" />
         <meta name="if:Show Follow Me" content="1" />
         <meta name="if:Show Archive and Random" content="1" />
@@ -419,25 +420,32 @@
                     </button>
                     {block:ShowTitle}{block:IfNotRedux}<a class="navbar-brand blog-title" href="{BlogURL}">{Title}</a>{/block:IfNotRedux}{/block:ShowTitle}
                 </div>
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav menu" {block:IfRedux}{block:ShowTitle}style="margin-left: -14px"{/block:ShowTitle}{/block:IfRedux} {block:HideTitle}style="margin-left: -14px"{/block:HideTitle}>
-                        {block:IfNotRedux}{block:AskEnabled}<li>
-                            <a href='/ask'><i class='fa fa-question-circle'></i> {AskLabel}</a>
-                        </li>{/block:AskEnabled}
-                        {block:SubmissionsEnabled}<li>
-                            <a href='/submit'><i class='fa fa-pencil-square-o'></i> {SubmitLabel}</a>
-                        </li>{/block:SubmissionsEnabled}{/block:IfNotRedux}
-                        {block:HasPages}{block:Pages}<li>
-                            <a href='{URL}'>{Label}</a>
-                        </li>{/block:Pages}{/block:HasPages}
-                    </ul>
-                    {block:IfNotRedux}{block:IfDisplaySearch}<form class='navbar-form navbar-right' role='search' action='/search' method='get'>
-                        <div class='input-group'>
-                            <span class='input-group-addon'><i class='fa fa-search'></i></span>
-                            <input name='q' type='search' class='form-control' placeholder='Search' value='{SearchQuery}'>
-                        </div>
-                    </form>{/block:IfDisplaySearch}{/block:IfNotRedux}
-                </div>
+                <ul class="nav navbar-nav menu" {block:IfRedux}{block:ShowTitle}style="margin-left: -14px"{/block:ShowTitle}{/block:IfRedux} {block:HideTitle}style="margin-left: -14px"{/block:HideTitle}>
+                    {block:IfNotRedux}{block:AskEnabled}<li>
+                        <a href='/ask'><i class='fa fa-question-circle'></i> {AskLabel}</a>
+                    </li>{/block:AskEnabled}
+                    {block:SubmissionsEnabled}<li>
+                        <a href='/submit'><i class='fa fa-pencil-square-o'></i> {SubmitLabel}</a>
+                    </li>{/block:SubmissionsEnabled}{/block:IfNotRedux}
+                    {block:IfUseMenuForPages}{block:HasPages}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{lang:Pages} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                {block:Pages}<li><a href='{URL}'>{Label}</a>{/block:Pages}
+                            </ul>
+                        <li>
+                        
+                    </li>{/block:Pages}{/block:HasPages}{/block:IfUseMenuForPages}
+                    {block:IfNotUseMenuForPages}{block:HasPages}
+                        {block:Pages}<li><a href='{URL}'>{Label}</a></li>{/block:Pages}
+                    {/block:HasPages}{/block:IfNotUseMenuForPages}
+                </ul>
+                {block:IfNotRedux}{block:IfDisplaySearch}<form class='navbar-form navbar-right' role='search' action='/search' method='get'>
+                    <div class='input-group'>
+                        <span class='input-group-addon'><i class='fa fa-search'></i></span>
+                        <input name='q' type='search' class='form-control' placeholder='Search' value='{SearchQuery}'>
+                    </div>
+                </form>{/block:IfDisplaySearch}{/block:IfNotRedux}
             </div>
         </nav>{/block:IfShowNavigationBar}
         {block:IfHeaderBelowNav}{block:ShowHeaderImage}<header class='blog-header'><a title="{Title}" class='no-link-deco no-link-color' href='/'>{/block:IfRedux}<div class="jumbotron blog-header-image"></div></a></header>{/block:ShowHeaderImage}{/block:IfHeaderBelowNav}
@@ -670,16 +678,10 @@
             <script src="//cdn.jsdelivr.net/g/html5shiv,respond"></script>
         <![endif]-->
         <script src="//cdn.jsdelivr.net/g/jquery,bootstrap"></script>
-        <script src="//static.tumblr.com/s6e9dpg/Mizn7316i/bootstrap-overflow-navs.js"></script>
         <script>
             $(document).ready(function() {
                 $('.tumblr_audio_player').attr('width','');
             });
-            $(".menu").overflowNavs({
-                "more" : "{lang:Pages}",
-                "parent" : ".nav-collapse",
-                "override_width" : true
-            });
         </script>
     </body>
-</html>
+</html>*
