@@ -2,10 +2,21 @@
 <!-- Bootstrapped, written by Somasis <http://somasis.com/> -->
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+        <title>{Title}{block:PostSummary} - {PostSummary}{/block:PostSummary}</title>
+        <link href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//cdn.jsdelivr.net/font-entypo/latest/dev/entypo.css" rel="stylesheet">
+        <link href="//cdn.jsdelivr.net/fontawesome/latest/css/font-awesome.css" rel="stylesheet">
+        
         <meta name="image:Background" content="" />
         <meta name="color:Dark Accent Color" content="#427ea3">
         <meta name="text:Roundedness" content="4px" />
-
+        
         <meta name="text:Twitter Username" content="" />
         <meta name="text:Vine Username" content="" />
         <meta name="text:Facebook Username" content="" />
@@ -57,18 +68,8 @@
         <meta name="if:Show YouTube Link" content="0" />
         <meta name="if:Show deviantArt Link" content="0" />
         <meta name="if:Show Behance Link" content="0" />
-
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link rel="shortcut icon" href="{Favicon}">
-        <link rel="alternate" type="application/rss+xml" href="{RSS}">
-        {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
-        <title>{Title}</title>
-        <link href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet">
-        <link href="//cdn.jsdelivr.net/font-entypo/latest/dev/entypo.css" rel="stylesheet">
-        <link href="//cdn.jsdelivr.net/fontawesome/latest/css/font-awesome.css" rel="stylesheet"> <!-- needs separate call because fontawesome and entypo's css calls jsdelivr's cdn in a way that causes a 404 -->
-
+        
+        
         <style>
             body {
                 background-image: url("{image:Background}");
@@ -420,7 +421,7 @@
                     </button>
                     {block:ShowTitle}{block:IfNotRedux}<a class="navbar-brand blog-title" href="{BlogURL}">{Title}</a>{/block:IfNotRedux}{/block:ShowTitle}
                 </div>
-                <ul class="nav navbar-nav menu" {block:IfRedux}{block:ShowTitle}style="margin-left: -14px"{/block:ShowTitle}{/block:IfRedux} {block:HideTitle}style="margin-left: -14px"{/block:HideTitle}>
+                <ul class="nav navbar-nav collapse navbar-collapse menu" {block:IfRedux}{block:ShowTitle}style="margin-left: -14px"{/block:ShowTitle}{/block:IfRedux} {block:HideTitle}style="margin-left: -14px"{/block:HideTitle}>
                     {block:IfNotRedux}{block:AskEnabled}<li>
                         <a href='/ask'><i class='fa fa-question-circle'></i> {AskLabel}</a>
                     </li>{/block:AskEnabled}
