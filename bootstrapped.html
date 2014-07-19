@@ -12,11 +12,13 @@
         <link href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet">
         <link href="//cdn.jsdelivr.net/font-entypo/latest/dev/entypo.css" rel="stylesheet">
         <link href="//cdn.jsdelivr.net/fontawesome/latest/css/font-awesome.css" rel="stylesheet">
-        
+
         <meta name="image:Background" content="" />
         <meta name="color:Dark Accent Color" content="#427ea3">
         <meta name="text:Roundedness" content="4px" />
-        
+        <meta name="font:Body" content="Helvetica" />
+        <meta name="font:Quote" content="Calluna" />
+
         <meta name="text:Twitter Username" content="" />
         <meta name="text:Vine Username" content="" />
         <meta name="text:Facebook Username" content="" />
@@ -68,13 +70,14 @@
         <meta name="if:Show YouTube Link" content="0" />
         <meta name="if:Show deviantArt Link" content="0" />
         <meta name="if:Show Behance Link" content="0" />
-        
-        
+
+
         <style>
             body {
                 background-image: url("{image:Background}");
                 background-repeat: {block:IfRepeatBackgroundHorizontally}repeat-x{/block:IfRepeatBackgroundHorizontally} {block:IfRepeatBackgroundVertically}repeat-y{/block:IfRepeatBackgroundVertically};
                 background-color: {BackgroundColor};
+                font-family: {font:Body};
             }
 
             .container-posts {
@@ -281,8 +284,8 @@
 
             .note blockquote { margin-left: 80px; }
 
-            .posts, .posts blockquote {
-                font-size: 14px !important;
+            .posts:not(.quote), .posts blockquote:not(.quote) {
+                font-size: 14px;
             }
 
             .post-source a:hover, .post-reblogged-from a:hover, .more_notes_link a:hover, .post-notes:hover {
@@ -320,11 +323,15 @@
             .photoset { width: 94% !important; }
             /* i feel like this is the wrong way to do it. any alternate ways of making photosets center correctly is welcome */
 
-            .quote { font-family: serif; }
+            .quote { font-family: {font:Quote}; }
 
-            .quote.quote-short { font-size: 22px !important; }
+            blockquote.quote { border: 0px !important; }
 
-            .quote.quote-long { font-size: 13px !important; }
+            .posts
+
+            .quote-short { font-size: 32px !important; }
+
+            .quote-long { font-size: 18px !important; }
 
             .avatar { border-radius: 5px; }
 
@@ -435,7 +442,7 @@
                                 {block:Pages}<li><a href='{URL}'>{Label}</a>{/block:Pages}
                             </ul>
                         <li>
-                        
+
                     </li>{/block:Pages}{/block:HasPages}{/block:IfUseMenuForPages}
                     {block:IfNotUseMenuForPages}{block:HasPages}
                         {block:Pages}<li><a href='{URL}'>{Label}</a></li>{/block:Pages}
@@ -570,7 +577,7 @@
                             </div>{/block:Answer}
                             {block:Video}<div class='post-special-content flex-video'>{VideoEmbed-500}</div>{/block:Video}
                             {block:Audio}<div class='post-special-content center-block'>{block:AudioEmbed}{AudioEmbed color="white"}{/block:AudioEmbed}</div>{/block:Audio}
-                            {block:Quote}<div class='panel-body'><blockquote class='quote quote-{Length}'>{Quote}{block:Source}<footer>{Source}</footer>{/block:Source}</blockquote></div>{/block:Quote}
+                            {block:Quote}<div class='panel-body'><blockquote class='quote quote-{Length}'>&#8220;{Quote}&#8221;{block:Source}<footer class='quote-source text-right'>{Source}</footer>{/block:Source}</blockquote></div>{/block:Quote}
                             {block:Photo}{LinkOpenTag}<img class='img-responsive center-block' src="{PhotoURL-HighRes}" alt="{PhotoAlt}" width="{PhotoWidth-HighRes}" height="{PhotoHeight-HighRes}" />{LinkCloseTag}{/block:Photo}
                             {block:Photoset}<div class='post-special-content center-block'>{Photoset}</div>{/block:Photoset}
                             {block:Panorama}<div class='post-special-content post-panorama center-block'>{LinkOpenTag}<img class='img-responsive center-block panorama' src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}</div>{/block:Panorama}
