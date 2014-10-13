@@ -19,6 +19,12 @@
         <meta name="font:Body" content="Helvetica" />
         <meta name="font:Quote" content="Calluna" />
 
+        <meta name="select:Description alignment" content="center" title="Center" />
+        <meta name="select:Description alignment" content="left" title="Left" />
+        <meta name="select:Description alignment" content="right" title="Right" />
+
+        <meta name="if:Panel shadows" content="0" />
+
         <meta name="text:Twitter Username" content="" />
         <meta name="text:Vine Username" content="" />
         <meta name="text:Facebook Username" content="" />
@@ -99,6 +105,10 @@
                 display: inline-block;
             }
 
+            {block:IfPanelShadows}.panel {
+                box-shadow: 0px 0px 5px rgba(0,0,0,.25);
+            }{/block:IfPanelShadows}
+
             {block:IfPanelsWithSlightTransparency}.navbar-default,.sidebar {
                 opacity: 0.95;
             }{/block:IfPanelsWithSlightTransparency}
@@ -111,6 +121,10 @@
 
             .blog-title a:hover {
                 color: {AccentColor} !important;
+            }
+
+            .blog-description {
+                text-align: {select:DescriptionAlignment};
             }
 
             {block:ShowHeaderImage}.blog-header-image {
