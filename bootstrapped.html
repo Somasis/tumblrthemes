@@ -365,6 +365,8 @@
 
             .ask .avatar { border-radius: 5px; height: auto; }
 
+            .ask-question { min-width: 100%; min-height: 96px; }
+
             .post-panorama { padding-top: 0px; }
 
             .panorama { overflow: hidden; }
@@ -589,25 +591,25 @@
                             {block:Answer}<div class="panel-body">
                                 <span class='ask'>
                                     <div class="media row">
-                                        <div class="col-md-2 media-left">
+                                        <div class="col-xs-2 media-left">
                                             <img class="avatar media-object" src="{AskerPortraitURL-128}" />
                                         </div>
-                                        <div class="col-md-10 media-right">
-                                            <div class="well">
+                                        <div class="col-xs-10 media-right">
+                                            <div class="ask-question well">
                                                 <h4 class='media-heading'>{lang:Asker asked 2}</h4>
                                                 {Question}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="media row">
-                                        <div class="col-md-10 media-left">
-                                            <div class="well">
+                                        <div class="col-xs-10 media-left">
+                                            <div class="ask-question well">
                                                 <h4 class='media-heading'><a href='{PostAuthorURL}'>{Answerer}{block:NotReblog}{PostAuthorName}{/block:NotReblog}</a> {block:English}answered{/block:English}</h4>
                                                 {Answer}
                                             </div>
                                         </div>
-                                        <div class="col-md-2 media-right">
-                                            <img class="avatar media-object pull-right" src="{block:Answerer}{AnswererPortraitURL-128}{/block:Answerer}{block:NotReblog}{PostAuthorPortraitURL-128}{/block:NotReblog}" />
+                                        <div class="col-xs-2 media-right">
+                                            <img class="avatar media-object" src="{block:Answerer}{AnswererPortraitURL-128}{/block:Answerer}{block:NotReblog}{PostAuthorPortraitURL-128}{/block:NotReblog}" />
                                         </div>
                                     </div>
                                 </span>
