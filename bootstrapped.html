@@ -496,7 +496,7 @@
         <div class="container{block:IfFluid}-fluid{/block:IfFluid} container-posts">
             <div class='row'>
                 {block:IfSidebarOnLeft}<!-- begin sidebar -->
-                <div class='col-lg-4 sidebar'>
+                <div class='col-md-4 sidebar'>
                     <div class="blog-details panel panel-default">
                         <div class='panel-body'>
                             {block:ShowAvatar}<div class="blog-avatar center-block">
@@ -558,7 +558,7 @@
                     {block:IfShowCopyright}<p class='accent-link text-right small copyright'>&copy; {CopyrightYears}</p>{/block:IfShowCopyright}
                 </div>
                 <!-- end sidebar -->{/block:IfSidebarOnLeft}
-                <div class='col-lg-8'>
+                <div class='col-md-8'>
                     {block:TagPage}<h2 style='color: {AccentColor}; margin-top: 0px;'>{lang:Showing posts tagged Tag 2} <a class='small fa fa-link' href='/tagged/{URLSafeTag}'></a></h2>{/block:TagPage}
                     {block:SearchPage}<h2 style='color: {AccentColor}; margin-top: 0px;{block:NoSearchResults}display:none;{/block:NoSearchResults}'>{lang:Showing SearchResultCount results for SearchQuery 2} <a class='small fa fa-link' href='/search?q={URLSafeSearchQuery}'></a></h2>
                     {block:NoSearchResults}<h2 style='color: {AccentColor}; margin-top: 0px'>{lang:No results for SearchQuery 2} <a class='small fa fa-link' href='/search?q={URLSafeSearchQuery}'></a></h2>{/block:NoSearchResults}{/block:SearchPage}
@@ -658,7 +658,7 @@
                     </ul>{/block:Pagination}
                 </div>
                 {block:IfNotSidebarOnLeft}<!-- begin sidebar -->
-                <div class='col-lg-4 sidebar'>
+                <div class='col-md-4 sidebar'>
                     <div class="blog-details panel panel-default">
                         <div class='panel-body'>
                             {block:ShowAvatar}<div class="blog-avatar center-block">
