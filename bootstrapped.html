@@ -42,18 +42,23 @@
 
         <meta name="if:Panel shadows" content="0" />
 
+        <meta name="text:Bandcamp URL" content="" />
+        <meta name="text:Behance Username" content="" />
+        <meta name="text:BitBucket Username" content="" />
+        <meta name="text:deviantArt Username" content="" />
+        <meta name="text:Facebook Username" content="" />
+        <meta name="text:GitHub Username" content="" />
+        <meta name="text:Google Plus URL" content="" />
+        <meta name="text:Instagram Username" content="" />
+        <meta name="text:LastFM Username" content="" />
+        <meta name="text:Pinterest Username" content="" />
+        <meta name="text:Skype Username" content="" />
+        <meta name="text:SoundCloud Username" content="" />
+        <meta name="text:Steam Profile Link" content="" />
         <meta name="text:Twitter Username" content="" />
         <meta name="text:Vine Username" content="" />
-        <meta name="text:Facebook Username" content="" />
-        <meta name="text:SoundCloud Username" content="" />
-        <meta name="text:Bandcamp URL" content="" />
-        <meta name="text:GitHub Username" content="" />
-        <meta name="text:Skype Username" content="" />
-        <meta name="text:Steam Profile Link" content="" />
-        <meta name="text:LastFM Username" content="" />
         <meta name="text:YouTube Username" content="" />
-        <meta name="text:deviantArt Username" content="" />
-        <meta name="text:Behance Username" content="" />
+
         <meta name="text:Custom Head HTML" content="" />
         <meta name="text:Custom Sidebar Footer HTML" content="" />
         <meta name="text:Custom Sidebar HTML" content="" />
@@ -80,20 +85,24 @@
         <meta name="if:Show Archive and Random" content="1" />
         <meta name="if:Show Following" content="0" />
         <meta name="if:Show Theme Credit" content="1" />
-        <meta name="if:Show RSS Feed" content="1" />
+
+        <meta name="if:Show Bandcamp Link" content="0" />
+        <meta name="if:Show Behance Link" content="0" />
+        <meta name="if:Show BitBucket Link" content="0" />
+        <meta name="if:Show deviantArt Link" content="0" />
         <meta name="if:Show Facebook Link" content="0" />
+        <meta name="if:Show GitHub Link" content="0" />
+        <meta name="if:Show Google Plus Link" content="0" />
+        <meta name="if:Show Instagram Link" content="0" />
+        <meta name="if:Show LastFM Link" content="0" />
+        <meta name="if:Show Pinterest Link" content="0" />
+        <meta name="if:Show RSS Feed" content="1" />
+        <meta name="if:Show Skype Link" content="0" />
+        <meta name="if:Show SoundCloud Link" content="0" />
+        <meta name="if:Show Steam Link" content="0" />
         <meta name="if:Show Twitter Link" content="0" />
         <meta name="if:Show Vine Link" content="0" />
-        <meta name="if:Show SoundCloud Link" content="0" />
-        <meta name="if:Show GitHub Link" content="0" />
-        <meta name="if:Show Skype Username" content="0" />
-        <meta name="if:Show Steam Link" content="0" />
-        <meta name="if:Show LastFM Link" content="0" />
-        <meta name="if:Show Bandcamp Link" content="0" />
         <meta name="if:Show YouTube Link" content="0" />
-        <meta name="if:Show deviantArt Link" content="0" />
-        <meta name="if:Show Behance Link" content="0" />
-
 
         <style>
             body {
@@ -531,17 +540,22 @@
                         </div>
                         <div class='panel-footer'>
                             {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>{/block:IfShowRSSFeed}
-                            {block:IfShowFacebookLink}<a class='accent-link' href='//facebook.com/{text:Facebook Username}' alt='Facebook - {text:Facebook Username}'><i class='fa fa-facebook-square fa-lg'></i></a>{/block:IfShowFacebookLink}
-                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
-                            {block:IfShowVineLink}<a class='accent-link' href='//vine.co/{text:Vine Username}' alt='Vine - {text:Vine Username}'><i class='fa fa-vine fa-lg'></i></a>{/block:IfShowVinelink}
-                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa fa-soundcloud fa-lg'></i></a>{/block:IfShowSoundCloudLink}
-                            {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-github-alt fa-lg'></i></a>{/block:IfShowGitHubLink}
-                            {block:IfShowBehanceLink}<a class='accent-link' href='//behance.net/{text:Behance Username}' alt='Behance - {text:Behance Username}'><i class='fa fa-behance fa-lg'></i></a>{/block:IfShowBehancelink}
-                            {block:IfShowSkypeUsername}<a class='accent-link' href='skype:{text:Skype Username}' alt='Skype - {text:Skype Username}'><i class='fa fa-skype fa-lg'></i></a>{/block:IfShowSkypeUsername}
-                            {block:IfShowSteamLink}<a class='accent-link' href='{text:Steam Profile Link}' alt='Steam'><i class='fa fa-steam fa-lg'></i></a>{/block:IfShowSteamlink}
-                            {block:IfShowLastFmLink}<a class='accent-link' href='//last.fm/user/{text:LastFM Username}' alt='LastFM - {text:LastFM Username}'><i class='fa-lg icon-lastfm'></i></a>{/block:IfShowLastFmLink}
                             {block:IfShowBandcampLink}<a class='accent-link' href='{text:Bandcamp URL}' alt='Bandcamp'><i class='fa fa-music'></i></a>{/block:IfShowBandcampLink}
-                            {block:IfShowYouTubeLink}<a class='accent-link' href='//youtube.com/user/{text:YouTube Username}' alt='YouTube - {text:YouTube Username}'><i class='fa fa-youtube-play'></i></a>{/block:IfShowYouTubeLink}
+                            {block:IfShowBehanceLink}<a class='accent-link' href='//behance.net/{text:Behance Username}' alt='Behance - {text:Behance Username}'><i class='fa fa-lg fa-behance fa-lg'></i></a>{/block:IfShowBehanceLink}
+                            {block:IfShowBitBucketLink}<a class='accent-link' href='//bitbucket.org/{text:BitBucket Username}' alt='BitBucket - {text:BitBucket Username}'><i class='fa fa-lg fa-bitbucket'></i></a>{/block:IfShowBitBucketLink}
+                            {block:IfShowFacebookLink}<a class='accent-link' href='//facebook.com/{text:Facebook Username}' alt='Facebook - {text:Facebook Username}'><i class='fa fa-lg fa-facebook-square'></i></a>{/block:IfShowFacebookLink}
+                            {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-lg fa-github-alt'></i></a>{/block:IfShowGitHubLink}
+                            {block:IfShowGooglePlusLink}<a class='accent-link' href='{text:Google Plus Username}' alt='Google+'><i class='fa fa-lg fa-google-plus'></i></a>{/block:IfShowGooglePlusLink}
+                            {block:IfShowInstagramLink}<a class='accent-link' href='//instagram.com/{text:Instagram Username}' alt='Instagram - {text:Instagram Username}'><i class='fa fa-lg fa-instagram'></i></a>{/block:IfShowInstagramLink}
+                            {block:IfShowLastFmLink}<a class='accent-link' href='//last.fm/user/{text:LastFM Username}' alt='LastFM - {text:LastFM Username}'><i class='fa fa-lg icon-lastfm'></i></a>{/block:IfShowLastFmLink}
+                            {block:IfShowPinterestLink}<a class='accent-link' href='//www.pinterest.com/user/{text:Pinterest Username}' alt='Pinterest - {text:Pinterest Username}'><i class='fa fa-lg icon-pinterest'></i></a>{/block:IfShowPinterestLink}
+                            {block:IfShowSkypeLink}<a class='accent-link' href='skype:{text:Skype Username}' alt='Skype - {text:Skype Username}'><i class='fa fa-lg fa-skype'></i></a>{/block:IfShowSkypeLink}
+                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa fa-lg fa-soundcloud'></i></a>{/block:IfShowSoundCloudLink}
+                            {block:IfShowSteamLink}<a class='accent-link' href='{text:Steam Profile Link}' alt='Steam'><i class='fa fa-steam fa-lg'></i></a>{/block:IfShowSteamLink}
+                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-lg fa-twitter'></i></a>{/block:IfShowTwitterLink}
+                            {block:IfShowVineLink}<a class='accent-link' href='//vine.co/{text:Vine Username}' alt='Vine - {text:Vine Username}'><i class='fa fa-lg fa-vine'></i></a>{/block:IfShowVineLink}
+                            {block:IfShowYouTubeLink}<a class='accent-link' href='//youtube.com/user/{text:YouTube Username}' alt='YouTube - {text:YouTube Username}'><i class='fa fa-lg fa-youtube-play'></i></a>{/block:IfShowYouTubeLink}
+
                             {text:Custom Sidebar Footer HTML}
                         </div>
                     </div>
@@ -693,17 +707,22 @@
                         </div>
                         <div class='panel-footer'>
                             {block:IfShowRSSFeed}<a class='accent-link' href='/rss' alt='{lang:Subscribe via RSS}'><i class='fa fa-rss fa-lg'></i></a>{/block:IfShowRSSFeed}
-                            {block:IfShowFacebookLink}<a class='accent-link' href='//facebook.com/{text:Facebook Username}' alt='Facebook - {text:Facebook Username}'><i class='fa fa-facebook-square fa-lg'></i></a>{/block:IfShowFacebookLink}
-                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-twitter fa-lg'></i></a>{/block:IfShowTwitterLink}
-                            {block:IfShowVineLink}<a class='accent-link' href='//vine.co/{text:Vine Username}' alt='Vine - {text:Vine Username}'><i class='fa fa-vine fa-lg'></i></a>{/block:IfShowVinelink}
-                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa fa-soundcloud fa-lg'></i></a>{/block:IfShowSoundCloudLink}
-                            {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-github-alt fa-lg'></i></a>{/block:IfShowGitHubLink}
-                            {block:IfShowBehanceLink}<a class='accent-link' href='//behance.net/{text:Behance Username}' alt='Behance - {text:Behance Username}'><i class='fa fa-behance fa-lg'></i></a>{/block:IfShowBehancelink}
-                            {block:IfShowSkypeUsername}<a class='accent-link' href='skype:{text:Skype Username}' alt='Skype - {text:Skype Username}'><i class='fa fa-skype fa-lg'></i></a>{/block:IfShowSkypeUsername}
-                            {block:IfShowSteamLink}<a class='accent-link' href='{text:Steam Profile Link}' alt='Steam'><i class='fa fa-steam fa-lg'></i></a>{/block:IfShowSteamlink}
-                            {block:IfShowLastFmLink}<a class='accent-link' href='//last.fm/user/{text:LastFM Username}' alt='LastFM - {text:LastFM Username}'><i class='fa-lg icon-lastfm'></i></a>{/block:IfShowLastFmLink}
                             {block:IfShowBandcampLink}<a class='accent-link' href='{text:Bandcamp URL}' alt='Bandcamp'><i class='fa fa-music'></i></a>{/block:IfShowBandcampLink}
-                            {block:IfShowYouTubeLink}<a class='accent-link' href='//youtube.com/user/{text:YouTube Username}' alt='YouTube - {text:YouTube Username}'><i class='fa fa-youtube-play'></i></a>{/block:IfShowYouTubeLink}
+                            {block:IfShowBehanceLink}<a class='accent-link' href='//behance.net/{text:Behance Username}' alt='Behance - {text:Behance Username}'><i class='fa fa-lg fa-behance fa-lg'></i></a>{/block:IfShowBehanceLink}
+                            {block:IfShowBitBucketLink}<a class='accent-link' href='//bitbucket.org/{text:BitBucket Username}' alt='BitBucket - {text:BitBucket Username}'><i class='fa fa-lg fa-bitbucket'></i></a>{/block:IfShowBitBucketLink}
+                            {block:IfShowFacebookLink}<a class='accent-link' href='//facebook.com/{text:Facebook Username}' alt='Facebook - {text:Facebook Username}'><i class='fa fa-lg fa-facebook-square'></i></a>{/block:IfShowFacebookLink}
+                            {block:IfShowGitHubLink}<a class='accent-link' href='//github.com/{text:GitHub Username}' alt='GitHub - {text:GitHub Username}'><i class='fa fa-lg fa-github-alt'></i></a>{/block:IfShowGitHubLink}
+                            {block:IfShowGooglePlusLink}<a class='accent-link' href='{text:Google Plus Username}' alt='Google+'><i class='fa fa-lg fa-google-plus'></i></a>{/block:IfShowGooglePlusLink}
+                            {block:IfShowInstagramLink}<a class='accent-link' href='//instagram.com/{text:Instagram Username}' alt='Instagram - {text:Instagram Username}'><i class='fa fa-lg fa-instagram'></i></a>{/block:IfShowInstagramLink}
+                            {block:IfShowLastFmLink}<a class='accent-link' href='//last.fm/user/{text:LastFM Username}' alt='LastFM - {text:LastFM Username}'><i class='fa fa-lg icon-lastfm'></i></a>{/block:IfShowLastFmLink}
+                            {block:IfShowPinterestLink}<a class='accent-link' href='//www.pinterest.com/user/{text:Pinterest Username}' alt='Pinterest - {text:Pinterest Username}'><i class='fa fa-lg icon-pinterest'></i></a>{/block:IfShowPinterestLink}
+                            {block:IfShowSkypeLink}<a class='accent-link' href='skype:{text:Skype Username}' alt='Skype - {text:Skype Username}'><i class='fa fa-lg fa-skype'></i></a>{/block:IfShowSkypeLink}
+                            {block:IfShowSoundCloudLink}<a class='accent-link' href='//soundcloud.com/{text:SoundCloud Username}' alt='SoundCloud - {text:SoundCloud Username}'><i class='fa fa-lg fa-soundcloud'></i></a>{/block:IfShowSoundCloudLink}
+                            {block:IfShowSteamLink}<a class='accent-link' href='{text:Steam Profile Link}' alt='Steam'><i class='fa fa-steam fa-lg'></i></a>{/block:IfShowSteamLink}
+                            {block:IfShowTwitterLink}<a class='accent-link' href='//twitter.com/{text:Twitter Username}' alt='Twitter - @{text:Twitter Username}'><i class='fa fa-lg fa-twitter'></i></a>{/block:IfShowTwitterLink}
+                            {block:IfShowVineLink}<a class='accent-link' href='//vine.co/{text:Vine Username}' alt='Vine - {text:Vine Username}'><i class='fa fa-lg fa-vine'></i></a>{/block:IfShowVineLink}
+                            {block:IfShowYouTubeLink}<a class='accent-link' href='//youtube.com/user/{text:YouTube Username}' alt='YouTube - {text:YouTube Username}'><i class='fa fa-lg fa-youtube-play'></i></a>{/block:IfShowYouTubeLink}
+
                             {text:Custom Sidebar Footer HTML}
                         </div>
                     </div>
