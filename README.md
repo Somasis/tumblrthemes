@@ -12,7 +12,7 @@ custom themes for tumblr. mods, original themes, you name it, if i made it, it i
 
 ## bootstrapped is now on tumblr's theme garden!
 
-click [here](https://www.tumblr.com/theme/38735) to go install it!
+click [here](https://www.tumblr.com/theme/38707) to go install it!
 
 ## installation of other themes
 
